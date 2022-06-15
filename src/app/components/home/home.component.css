@@ -1,5 +1,5 @@
 .card {
-  margin: auto;
+  margin: 1rem auto;
   position: fixed;
   transform:rotateY();
   width: 90%;
@@ -7,4 +7,8 @@
 }
 img{
   width: 15rem;
+}
+
+div imagens{
+  width: 100%;
 }
