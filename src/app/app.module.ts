@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -28,7 +29,8 @@ import { HomeComponent } from './components/home/home.component';
     MatSidenavModule,
     MatListModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

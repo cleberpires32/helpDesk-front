@@ -1,0 +1,10 @@
+.card {
+  margin: auto;
+  position: fixed;
+  transform:rotateY();
+  width: 90%;
+  background-color: rgb(235, 235, 235);
+}
+img{
+  width: 15rem;
+}
