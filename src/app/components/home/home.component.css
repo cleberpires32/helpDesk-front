@@ -1,9 +1,12 @@
-.card {
+card {
   margin: 1rem auto;
-  position: fixed;
-  width: 80%;
+  width: 100%;
   background-color: rgb(235, 235, 235);
 }
 img{
   width: 10rem;
+}
+.matCard {
+  margin: 1rem auto;
+  width: 80%;
 }
