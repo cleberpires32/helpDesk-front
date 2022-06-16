@@ -1,14 +1,9 @@
 .card {
   margin: 1rem auto;
   position: fixed;
-  transform:rotateY();
   width: 90%;
   background-color: rgb(235, 235, 235);
 }
 img{
-  width: 15rem;
-}
-
-div imagens{
-  width: 100%;
+  width: 10rem;
 }
