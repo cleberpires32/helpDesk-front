@@ -1,6 +1,7 @@
 import { Crendenciais } from './../models/crendenciais';
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule,FormControl,Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl(null, Validators.email);
   senha = new FormControl(null, Validators.minLength(5))
 
-  constructor() { }
+  constructor(private toast: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -24,5 +25,9 @@ export class LoginComponent implements OnInit {
       return true
     }else
     return false
+  }
+
+  logar(){
+    this.toast.error('Senha ou Email inválidos', 'Erro de Login')
   }
 }

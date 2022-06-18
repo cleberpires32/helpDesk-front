@@ -18,6 +18,8 @@ import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-
 import { LoginComponent } from './components/login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { timeout } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
     MatTableModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({timeOut:4000,closeButton:true,progressBar:true})
 
   ],
   providers: [],
