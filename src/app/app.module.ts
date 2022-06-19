@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { timeout } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { timeout } from 'rxjs';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot({timeOut:4000,closeButton:true,progressBar:true})
+    ToastrModule.forRoot({timeOut:4000,closeButton:true,progressBar:true}),
+    HttpClientModule
 
   ],
   providers: [],
