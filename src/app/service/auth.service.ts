@@ -21,16 +21,20 @@ export class AuthService {
     });
   }
 
-  sucessFullLogin(authToken: string){
+  sucessFullLogin(authToken: string) {
     //Salvando o token no localStorage em memoria.
     localStorage.setItem('token', authToken)
   }
 
-  isAuthenticate(){
+  isAuthenticate() {
     let token = localStorage.getItem('token')
-    if(token != null){
+    if (token != null) {
       return !this.jwtService.isTokenExpired(token) //retorna verdadeiro sempre se não estiver expirado.
     }
     return false
+  }
+
+  logout() {
+    localStorage.clear();
   }
 }
