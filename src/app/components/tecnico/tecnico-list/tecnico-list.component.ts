@@ -1,7 +1,9 @@
+import { TecnicoService } from './../../../services/tecnico.service';
 import { Tecnico } from './../tecnico';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-tecnico-list',
@@ -10,27 +12,37 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class TecnicoListComponent implements OnInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-ELEMENT_DATA: Tecnico[]=[
-  { id: 1, nome: 'Cluindo Alves',cpf: '645-859-558-22',email: 'Alves@gmail.com', perfis:   ['0'], dataCriacao: '15/02/2022' },
-  { id: 2, nome: 'Joao Peregrino',cpf: '645-859-558-22',email: 'joao@gmail.com', perfis:   ['0'], dataCriacao: '15/02/2022' },
-  { id: 3, nome: 'Antonio Pedro',cpf: '645-859-558-22',email: 'antonio@gmail.com', perfis:   ['0'], dataCriacao: '15/02/2022' }
 
-]
+  ELEMENT_DATA: Tecnico[] = [];
 
-  constructor() { }
+  constructor(private tecnicoService: TecnicoService) { }
 
-    displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
-    dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
+
+
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
+  dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);;
 
   ngOnInit(): void {
+    this.findAll();
   }
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  findAll() {
+    this.tecnicoService.findAll().subscribe(resposta => {
+      this.ELEMENT_DATA = resposta;
+      this.dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator
+    });
+  }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }

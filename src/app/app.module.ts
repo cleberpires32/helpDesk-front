@@ -22,6 +22,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { timeout } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({timeOut:4000,closeButton:true,progressBar:true}),
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
 
   ],
   providers: [AuthInterceptorProvider],
