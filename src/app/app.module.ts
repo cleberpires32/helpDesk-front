@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ToastrModule.forRoot({timeOut:4000,closeButton:true,progressBar:true}),
     HttpClientModule,
     MatPaginatorModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgxMaskModule.forRoot()
 
   ],
   providers: [AuthInterceptorProvider],
