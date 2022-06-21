@@ -24,6 +24,7 @@ import { timeout } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecn
     ReactiveFormsModule,
     ToastrModule.forRoot({timeOut:4000,closeButton:true,progressBar:true}),
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule
 
   ],
   providers: [AuthInterceptorProvider],
