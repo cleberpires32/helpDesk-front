@@ -33,7 +33,7 @@
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let element">
           <a><i class="material-icons edit" routerLink="update/{{element.id}}">edit</i></a>
-          <a><i class="material-icons delete" routerLink="">delete</i></a>
+          <a><i class="material-icons delete" routerLink="delete/{{element.id}}">delete</i></a>
         </td>
 
       </ng-container>
