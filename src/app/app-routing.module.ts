@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ClienteCreateComponent } from './components/cliente/cliente-create/cliente-create.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
         { path: 'tecnicos/create', component: TecnicoCreateComponent},
         { path: 'tecnicos/update/:id', component: TecnicoUpdateComponent},
         { path: 'tecnicos/delete/:id', component: TecnicoDeleteComponent },
-        { path: 'clientes', component: ClienteListComponent}
+        { path: 'clientes', component: ClienteListComponent},
+        { path: 'clientes/create', component: ClienteCreateComponent}
       ]
   },
   {
