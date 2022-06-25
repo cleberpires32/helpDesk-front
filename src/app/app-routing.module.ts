@@ -1,3 +1,4 @@
+import { ClienteUpdateComponent } from './components/cliente/cliente-update/cliente-update.component';
 import { ClienteListComponent } from './components/cliente/cliente-list/cliente-list.component';
 import { TecnicoDeleteComponent } from './components/tecnico/tecnico-delete/tecnico-delete.component';
 import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
         { path: 'tecnicos/update/:id', component: TecnicoUpdateComponent},
         { path: 'tecnicos/delete/:id', component: TecnicoDeleteComponent },
         { path: 'clientes', component: ClienteListComponent},
-        { path: 'clientes/create', component: ClienteCreateComponent}
+        { path: 'clientes/create', component: ClienteCreateComponent},
+        { path: 'clientes/update/:id', component: ClienteUpdateComponent}
       ]
   },
   {
