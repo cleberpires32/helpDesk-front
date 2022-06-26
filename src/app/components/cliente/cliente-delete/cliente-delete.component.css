@@ -1,0 +1,27 @@
+.container{
+  width: 25rem;
+  margin: auto;
+  padding: 1rem ;
+}
+
+.fullWidth{
+  width: 100%;
+}
+
+h1{
+  text-align: center;
+}
+
+.section{
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+button{
+  margin-bottom: .5rem;
+}
+
+mat-icon {
+  opacity: .8;
+}
