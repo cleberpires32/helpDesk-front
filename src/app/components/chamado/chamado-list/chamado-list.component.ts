@@ -22,7 +22,7 @@ export class ChamadoListComponent implements OnInit {
     this.findAll();
   }
 
-  findAll(){
+  findAll() {
     return this.chamadoService.findAll().subscribe(response => {
       this.ELEMENT_DATA = response;
       this.dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
@@ -37,5 +37,23 @@ export class ChamadoListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  filterStatus(status: any): string {
+    if (status == '0') {
+      return 'ABERTO'
+    } else if (status == '1') {
+      return 'ANDAMENTO'
+    } else {
+      return 'ENCERRADO'
+    }
+  }
+
+  filterPrioridade(prioridade: any): string {
+    if (prioridade == '0') {
+      return 'BAIXA'
+    } else if (prioridade == '1') {
+      return 'MÉDIA'
+    } else { return 'ALTA' }
   }
 }

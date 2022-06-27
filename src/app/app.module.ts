@@ -1,3 +1,4 @@
+import { MatRadioModule } from '@angular/material/radio';
 import { ClienteUpdateComponent } from './components/cliente/cliente-update/cliente-update.component';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { NgModule } from '@angular/core';
@@ -68,7 +69,8 @@ import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-
     HttpClientModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    MatRadioModule
 
   ],
   providers: [AuthInterceptorProvider],
