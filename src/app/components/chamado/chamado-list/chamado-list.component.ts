@@ -40,13 +40,10 @@ export class ChamadoListComponent implements OnInit {
   }
 
   filterStatus(status: any): string {
-    if (status == '0') {
-      return 'ABERTO'
-    } else if (status == '1') {
-      return 'ANDAMENTO'
-    } else {
-      return 'ENCERRADO'
-    }
+    if (status == '0') { return 'ABERTO' }
+    else if (status == '1') { return 'ANDAMENTO' }
+    else if (status == '2') { return 'CANCELADO' }
+    else { return 'ENCERRADO' }
   }
 
   filterPrioridade(prioridade: any): string {
