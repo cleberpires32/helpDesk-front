@@ -1,7 +1,8 @@
+import { Chamado } from './../Chamado';
+import { retry } from 'rxjs';
 import { ChamadoService } from './../../../services/chamado.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Chamado } from '../Chamado';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
@@ -12,6 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class ChamadoListComponent implements OnInit {
 
   ELEMENT_DATA: Chamado[] = [];
+  ELEMENT_DATASTATUS: Chamado[] = [];
   dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
   displayedColumns: string[] = ['id', 'nomeCliente', 'dataAbertura', 'status', 'prioridade', 'nomeTecnico']
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -52,5 +54,19 @@ export class ChamadoListComponent implements OnInit {
     } else if (prioridade == '1') {
       return 'MÉDIA'
     } else { return 'ALTA' }
+  }
+
+  orderByStatus(selec: any): void{
+
+    let filterRaio: Chamado[] = [];
+
+    this.ELEMENT_DATA.forEach(element => {
+      if(element.status == selec){
+        filterRaio.push(element);
+      }
+    })
+    this.ELEMENT_DATASTATUS = filterRaio;
+    this.dataSource = new MatTableDataSource<Chamado>(filterRaio);
+    this.dataSource.paginator = this.paginator;
   }
 }
