@@ -4,14 +4,14 @@
   <form class="form">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Título</mat-label>
-      <input matInput placeholder="Ex. Manutenção, Conserto" value="">
+      <input [formControl]="titulo" required matInput placeholder="Ex. Manutenção, Conserto" value="">
     </mat-form-field>
   </form>
 
   <div class="full-width statu-prioridade">
     <mat-form-field class="status" appearance="outline">
       <mat-label>Status</mat-label>
-      <select matNativeControl required>
+      <select [formControl]="status" required matNativeControl required>
         <option value="0">Aberto</option>
         <option value="1">Andamento</option>
         <option value="2">Cancelado</option>
@@ -21,7 +21,7 @@
 
     <mat-form-field class="prioridade" appearance="outline">
       <mat-label>Prioridade</mat-label>
-      <select matNativeControl required>
+      <select [formControl]="prioridade" required matNativeControl required>
         <option value="0">Baixa</option>
         <option value="1">Média</option>
         <option value="2">Alta</option>
@@ -32,7 +32,7 @@
   <div class="tecnico">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Selecione um técnico</mat-label>
-      <select matNativeControl required>
+      <select [formControl]="tecnico" required matNativeControl required>
         <option value="0">Cleber</option>
       </select>
     </mat-form-field>
@@ -41,7 +41,7 @@
   <div class="cliente">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Selecione um cliente</mat-label>
-      <select matNativeControl required>
+      <select [formControl]="cliente" required matNativeControl required>
         <option value="0">Cleber</option>
       </select>
     </mat-form-field>
@@ -50,10 +50,10 @@
   <form class="form">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Textarea</mat-label>
-      <textarea class="descricao" matInput placeholder="Escreva a descrição ocorrida."></textarea>
+      <textarea [formControl]="descricao" required class="descricao" matInput placeholder="Escreva a descrição ocorrida."></textarea>
     </mat-form-field>
   </form>
 
-  <button mat-raised-button class="full-width" color="primary">Salvar</button>
+  <button [disabled]="!validaCampos()" mat-raised-button class="full-width" color="primary">Salvar</button>
   <button mat-stroked-button class="full-width" color="warn">Cancelar</button>
 </div>
