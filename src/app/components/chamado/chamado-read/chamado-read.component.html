@@ -1,1 +1,80 @@
-<p>chamado-read works!</p>
+<div class="container mat-elevation-z8">
+  <h1>Visualização de Chamado</h1>
+    <img class="full-width" src="./assets/img/chamado-create.svg">
+    <form class="form">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Título</mat-label>
+        <input
+        [disabled]="true"
+        [(ngModel)]="chamado.titulo" name="titulo"
+        matInput placeholder="Ex. Manutenção, Conserto">
+      </mat-form-field>
+    </form>
+
+    <div class="full-width statu-prioridade">
+      <mat-form-field class="status" appearance="outline">
+        <mat-label>Status</mat-label>
+        <select
+        [disabled]="true"
+        [(ngModel)]="chamado.status"
+        name="status"
+        matNativeControl >
+          <option value="0">Aberto</option>
+          <option value="1">Andamento</option>
+          <option value="2">Cancelado</option>
+          <option value="3">Encerrado</option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field class="prioridade" appearance="outline">
+        <mat-label>Prioridade</mat-label>
+        <select
+        [disabled]="true"
+        [(ngModel)]="chamado.prioridade"
+        name="prioridade"
+        matNativeControl>
+          <option value="0">Baixa</option>
+          <option value="1">Média</option>
+          <option value="2">Alta</option>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <div class="tecnico">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Técnico ({{chamado.nomeTecnico}})</mat-label>
+        <select
+        [disabled]="true"
+        [(ngModel)]="chamado.tecnico"
+        name="tecnico"
+        matNativeControl>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <div class="cliente">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Cliente ({{chamado.nomeCliente}})</mat-label>
+        <select
+        [disabled]="true"
+        [(ngModel)]="chamado.cliente"
+        name="cliente"
+        matNativeControl>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <form class="form">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Textarea</mat-label>
+        <textarea
+        [disabled]="true"
+        [(ngModel)]="chamado.observacoes"
+        name="observacoes"
+        class="descricao"
+        matInput placeholder="Escreva a descrição ocorrida."></textarea>
+      </mat-form-field>
+    </form>
+
+    <button routerLink="../../" mat-stroked-button class="full-width" color="warn">Voltar</button>
+  </div>
