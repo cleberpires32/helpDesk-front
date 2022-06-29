@@ -1,1 +1,83 @@
-<p>chamado-update works!</p>
+<div class="container mat-elevation-z8">
+  <h1>Atualizando Chamado</h1>
+    <img class="full-width" src="./assets/img/chamado-create.svg">
+    <form class="form">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Título</mat-label>
+        <input
+        [(ngModel)]="chamado.titulo" name="titulo"
+        [formControl]="tit" required
+        matInput placeholder="Ex. Manutenção, Conserto">
+      </mat-form-field>
+    </form>
+
+    <div class="full-width statu-prioridade">
+      <mat-form-field class="status" appearance="outline">
+        <mat-label>Status</mat-label>
+        <select
+        [(ngModel)]="chamado.status"
+        name="status"
+        [formControl]="sta" required
+        matNativeControl >
+          <option value="0">Aberto</option>
+          <option value="1">Andamento</option>
+          <option value="2">Cancelado</option>
+          <option value="3">Encerrado</option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field class="prioridade" appearance="outline">
+        <mat-label>Prioridade</mat-label>
+        <select
+        [(ngModel)]="chamado.prioridade"
+        name="prioridade"
+        [formControl]="pri" required
+        matNativeControl>
+          <option value="0">Baixa</option>
+          <option value="1">Média</option>
+          <option value="2">Alta</option>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <div class="tecnico">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Selecione um técnico</mat-label>
+        <select
+        [(ngModel)]="chamado.tecnico"
+        name="tecnico"
+        [formControl]="tec" required
+        matNativeControl>
+          <option *ngFor="let t of listaTecnicos" value={{t.id}}>{{t.nome}}</option>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <div class="cliente">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Selecione um cliente</mat-label>
+        <select
+        [(ngModel)]="chamado.cliente"
+        name="cliente"
+        [formControl]="cli" required
+        matNativeControl>
+          <option *ngFor="let c of listaClientes" value={{c.id}}>{{c.nome}}</option>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <form class="form">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Textarea</mat-label>
+        <textarea
+        [(ngModel)]="chamado.observacoes"
+        name="observacoes"
+        [formControl]="obs" required
+        class="descricao"
+        matInput placeholder="Escreva a descrição ocorrida."></textarea>
+      </mat-form-field>
+    </form>
+
+    <button (click)="create()" [disabled]="!validaCampos()" mat-raised-button class="full-width" color="primary">Salvar</button>
+    <button routerLink="../" mat-stroked-button class="full-width" color="warn">Cancelar</button>
+  </div>
