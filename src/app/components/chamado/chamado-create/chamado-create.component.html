@@ -4,14 +4,21 @@
   <form class="form">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Título</mat-label>
-      <input [formControl]="titulo" required matInput placeholder="Ex. Manutenção, Conserto" value="">
+      <input
+      [(ngModel)]="chamado.titulo" name="titulo"
+      [formControl]="tit" required
+      matInput placeholder="Ex. Manutenção, Conserto">
     </mat-form-field>
   </form>
 
   <div class="full-width statu-prioridade">
     <mat-form-field class="status" appearance="outline">
       <mat-label>Status</mat-label>
-      <select [formControl]="status" required matNativeControl required>
+      <select
+      [(ngModel)]="chamado.status"
+      name="status"
+      [formControl]="sta" required
+      matNativeControl >
         <option value="0">Aberto</option>
         <option value="1">Andamento</option>
         <option value="2">Cancelado</option>
@@ -21,7 +28,11 @@
 
     <mat-form-field class="prioridade" appearance="outline">
       <mat-label>Prioridade</mat-label>
-      <select [formControl]="prioridade" required matNativeControl required>
+      <select
+      [(ngModel)]="chamado.prioridade"
+      name="prioridade"
+      [formControl]="pri" required
+      matNativeControl>
         <option value="0">Baixa</option>
         <option value="1">Média</option>
         <option value="2">Alta</option>
@@ -32,8 +43,12 @@
   <div class="tecnico">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Selecione um técnico</mat-label>
-      <select [formControl]="tecnico" required matNativeControl required>
-        <option value="0">Cleber</option>
+      <select
+      [(ngModel)]="chamado.tecnico"
+      name="tecnico"
+      [formControl]="tec" required
+      matNativeControl>
+        <option *ngFor="let t of listaTecnicos" value={{t.id}}>{{t.nome}}</option>
       </select>
     </mat-form-field>
   </div>
@@ -41,8 +56,12 @@
   <div class="cliente">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Selecione um cliente</mat-label>
-      <select [formControl]="cliente" required matNativeControl required>
-        <option value="0">Cleber</option>
+      <select
+      [(ngModel)]="chamado.cliente"
+      name="cliente"
+      [formControl]="cli" required
+      matNativeControl>
+        <option *ngFor="let c of listaClientes" value={{c.id}}>{{c.nome}}</option>
       </select>
     </mat-form-field>
   </div>
@@ -50,10 +69,15 @@
   <form class="form">
     <mat-form-field class="full-width" appearance="outline">
       <mat-label>Textarea</mat-label>
-      <textarea [formControl]="descricao" required class="descricao" matInput placeholder="Escreva a descrição ocorrida."></textarea>
+      <textarea
+      [(ngModel)]="chamado.observacoes"
+      name="observacoes"
+      [formControl]="obs" required
+      class="descricao"
+      matInput placeholder="Escreva a descrição ocorrida."></textarea>
     </mat-form-field>
   </form>
 
-  <button [disabled]="!validaCampos()" mat-raised-button class="full-width" color="primary">Salvar</button>
-  <button mat-stroked-button class="full-width" color="warn">Cancelar</button>
+  <button (click)="create()" [disabled]="!validaCampos()" mat-raised-button class="full-width" color="primary">Salvar</button>
+  <button routerLink="../" mat-stroked-button class="full-width" color="warn">Cancelar</button>
 </div>
