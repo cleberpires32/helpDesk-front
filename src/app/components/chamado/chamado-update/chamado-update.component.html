@@ -42,7 +42,7 @@
 
     <div class="tecnico">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Selecione um técnico</mat-label>
+        <mat-label>Técnico</mat-label>
         <select
         [(ngModel)]="chamado.tecnico"
         name="tecnico"
@@ -55,7 +55,7 @@
 
     <div class="cliente">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Selecione um cliente</mat-label>
+        <mat-label>Cliente</mat-label>
         <select
         [(ngModel)]="chamado.cliente"
         name="cliente"
@@ -78,6 +78,6 @@
       </mat-form-field>
     </form>
 
-    <button (click)="create()" [disabled]="!validaCampos()" mat-raised-button class="full-width" color="primary">Salvar</button>
-    <button routerLink="../" mat-stroked-button class="full-width" color="warn">Cancelar</button>
+    <button (click)="update()" [disabled]="!validaCampos()" mat-raised-button class="full-width" color="primary">Salvar</button>
+    <button routerLink="../../" mat-stroked-button class="full-width" color="warn">Cancelar</button>
   </div>

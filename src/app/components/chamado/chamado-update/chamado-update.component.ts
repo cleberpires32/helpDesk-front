@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ChamadoService } from './../../../services/chamado.service';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -28,7 +28,8 @@ export class ChamadoUpdateComponent implements OnInit {
     private clienteService: ClienteService,
     private chamadoService: ChamadoService,
     private toastrService: ToastrService,
-    private router: Router) { }
+    private router: Router,
+    private actvRouter: ActivatedRoute) { }
 
   chamado: Chamado = {
     id: '',
@@ -48,16 +49,16 @@ export class ChamadoUpdateComponent implements OnInit {
   listaClientes: Cliente[] = [];
 
   ngOnInit(): void {
+    this.chamado.id = this.actvRouter.snapshot.paramMap.get('id');
     this.findTecnicos()
     this.findClientes()
-    console.log(this.validaCampos);
-
+    this.findById();
   }
 
   create(): void {
-    this.chamadoService.create(this.chamado).subscribe(response =>{
+    this.chamadoService.create(this.chamado).subscribe(response => {
       console.log(response);
-      this.toastrService.success('Chamado salvo com sucesso','Novo Chamado');
+      this.toastrService.success('Chamado salvo com sucesso', 'Novo Chamado');
       this.router.navigate(['chamados']);
     }, ex => {
       this.toastrService.error(ex.error.error);
@@ -82,4 +83,19 @@ export class ChamadoUpdateComponent implements OnInit {
     })
   }
 
+  findById(): void {
+    this.chamadoService.findById(this.chamado.id).subscribe(response => {
+      this.chamado = response;
+    }, ex => { this.toastrService.warning('Chamado não encontrado') })
+  }
+
+  update(): void {
+    this.chamado.dataAbertura.slice
+    this.chamadoService.update(this.chamado).subscribe(response =>{
+      this.toastrService.success('Chamado atualizado com sucesso.');
+      this.router.navigate(['chamados'])
+    }, ex =>{
+      this.toastrService.error(ex.error.error)
+    })
+  }
 }
