@@ -10,3 +10,9 @@ img{
   margin: 1rem auto;
   width: 80%;
 }
+
+.imagens {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
