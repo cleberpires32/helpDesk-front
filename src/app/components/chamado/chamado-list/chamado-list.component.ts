@@ -18,6 +18,7 @@ export class ChamadoListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nomeCliente', 'dataAbertura', 'status', 'prioridade', 'nomeTecnico', 'acoes']
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
+
   constructor(private chamadoService: ChamadoService) { }
 
   ngOnInit(): void {
