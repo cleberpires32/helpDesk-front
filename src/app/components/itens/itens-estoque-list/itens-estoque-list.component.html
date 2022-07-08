@@ -30,15 +30,14 @@
       </ng-container>
 
       <ng-container matColumnDef="valor">
-        <th mat-header-cell *matHeaderCellDef> Valor </th>
-        <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+        <th mat-header-cell *matHeaderCellDef> Valor unitário</th>
+        <td mat-cell *matCellDef="let element"> {{element.valor | currency}} </td>
       </ng-container>
 
       <ng-container matColumnDef="acoes">
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let element">
           <a><i class="material-icons edit" routerLink="update/{{element.id}}">edit</i></a>
-          <a><i class="material-icons delete" routerLink="delete/{{element.id}}">delete</i></a>
         </td>
 
       </ng-container>
