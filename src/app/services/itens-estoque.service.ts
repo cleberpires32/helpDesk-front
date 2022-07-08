@@ -15,4 +15,7 @@ export class ItensEstoqueService {
     return this.http.post<ItensEstoque>(`${API_CONFIG.baseUrl}/itensEstoques`, itensEstoque);
   }
 
+  findAll(): Observable<ItensEstoque[]>{
+    return this.http.get<ItensEstoque[]>(`${API_CONFIG.baseUrl}/itensEstoques`)
+  }
 }

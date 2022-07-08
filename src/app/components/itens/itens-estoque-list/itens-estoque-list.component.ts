@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { ItensEstoqueService } from './../../../services/itens-estoque.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ItensEstoqueService } from 'src/app/services/itens-estoque.service';
 import { ItensEstoque } from '../ItensEstoque';
 
 @Component({
@@ -11,37 +12,34 @@ import { ItensEstoque } from '../ItensEstoque';
   styleUrls: ['./itens-estoque-list.component.css']
 })
 export class ItensEstoqueListComponent implements OnInit {
-  codigo: FormControl = new FormControl(null, Validators.minLength(3));
-  descricao: FormControl = new FormControl(null, Validators.required);
-  quantidade: FormControl = new FormControl(null, Validators.required);
-  valor: FormControl = new FormControl(null, Validators.required);
-  valor2: number = 12345.85;
-  constructor(
-    private itesnService: ItensEstoqueService,
-    private toast: ToastrService,
-    private router: Router) { }
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-  itens: ItensEstoque = {
-    id:         '',
-    descricao:  '',
-    codigo:     '',
-    quantidade: '',
-    valor:      ''
-  }
+
+  ELEMENT_DATA: ItensEstoque[] = [];
+
+  constructor(private itensEstoqueService: ItensEstoqueService) { }
+
+  displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade','valor','acoes'];
+  dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
 
   ngOnInit(): void {
+    this.findAll();
   }
 
-  create(): void {
-    this.itesnService.create(this.itens).subscribe(response =>{
-      this.toast.success('Itens de estoque salvo com sucesso','Novo')
-      this.router.navigate(['chamados'])
-    },ex =>{
-      this.toast.error(ex.error().error());
-    })
+  findAll() {
+    this.itensEstoqueService.findAll().subscribe(resposta => {
+      this.ELEMENT_DATA = resposta;
+      this.dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator
+    });
   }
 
-  validaCampos(): boolean {
-    return this.codigo.valid && this.descricao.valid && this.quantidade.valid && this.valor.valid;
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
