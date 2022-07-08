@@ -36,7 +36,8 @@ const routes: Routes = [
         { path: 'chamados/create', component: ChamadoCreateComponent},
         { path: 'chamados/update/:id', component: ChamadoUpdateComponent},
         { path: 'chamados/read/:id', component: ChamadoReadComponent},
-        { path: 'itensEstoques', component: ItensEstoqueListComponent}
+        { path: 'itensEstoques', component: ItensEstoqueListComponent},
+        { path: 'itensEstoques/create', component: ItensEstoqueCreateComponent}
       ]
   },
   {
