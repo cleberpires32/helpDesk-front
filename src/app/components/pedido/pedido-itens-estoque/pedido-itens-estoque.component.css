@@ -1,0 +1,31 @@
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+table {
+  width: 100%;
+}
+
+button {
+  width: 100%;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.edit {
+  color: rgb(43, 152, 160);
+}
+
+.delete {
+  color: rgb(209, 47, 47);
+}
+
+mat-radio-group {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
