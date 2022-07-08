@@ -28,6 +28,8 @@ export class ItensEstoqueListComponent implements OnInit {
 
   findAll() {
     this.itensEstoqueService.findAll().subscribe(resposta => {
+      console.log(resposta);
+
       this.ELEMENT_DATA = resposta;
       this.dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator
