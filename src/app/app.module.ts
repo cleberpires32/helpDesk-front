@@ -1,7 +1,7 @@
 import { MatRadioModule } from '@angular/material/radio';
 import { ClienteUpdateComponent } from './components/cliente/cliente-update/cliente-update.component';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -38,6 +38,11 @@ import { ChamadoCreateComponent } from './components/chamado/chamado-create/cham
 import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { ItensEstoqueCreateComponent } from './components/itens/itens-estoque-create/itens-estoque-create.component';
+
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -81,7 +86,8 @@ import { ItensEstoqueCreateComponent } from './components/itens/itens-estoque-cr
     MatRadioModule
 
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [AuthInterceptorProvider, { provide: LOCALE_ID, useValue: 'pt' },
+  { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

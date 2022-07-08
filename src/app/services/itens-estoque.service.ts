@@ -12,7 +12,7 @@ export class ItensEstoqueService {
   constructor(private http: HttpClient) { }
 
   create(itensEstoque: ItensEstoque): Observable<ItensEstoque>{
-    return this.http.post<ItensEstoque>(`${API_CONFIG.baseUrl}/itensPedidos`, itensEstoque);
+    return this.http.post<ItensEstoque>(`${API_CONFIG.baseUrl}/itensEstoques`, itensEstoque);
   }
 
 }

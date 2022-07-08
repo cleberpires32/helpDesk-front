@@ -4,53 +4,35 @@
 
     <mat-form-field class="fullWidth" appearance="legacy">
       <mat-label>Descrição</mat-label>
-      <input
-      [(ngModel)]="itens.descricao"
-      name="descricao"
-      maxlength="50"
-      [formControl] = "descricao"
-      required
-      matInput placeholder="Placeholder">
+      <input [(ngModel)]="itens.descricao" name="descricao" maxlength="50"
+      [formControl]="descricao" required matInput>
       <mat-icon matSuffix>edit</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="fullWidth" appearance="legacy">
       <mat-label>Código</mat-label>
-      <input
-      [(ngModel)]="itens.codigo"
-      name="codigo"
-      [formControl] = "codigo"
-      required
-      matInput placeholder="Placeholder">
+      <input [(ngModel)]="itens.codigo" name="codigo"
+      [formControl]="codigo" required matInput>
       <mat-icon matSuffix>pin</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="fullWidth" appearance="legacy">
       <mat-label>Quantidade</mat-label>
-      <input
-      [(ngModel)]="itens.quantidade"
-      name="quantidade"
-      [formControl] = "quantidade"
-      required
-      matInput placeholder="Placeholder">
+      <input type="text" [(ngModel)]="itens.quantidade" name="quantidade"
+      [formControl]="quantidade" required matInput>
       <mat-icon matSuffix>drag_indicator</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="fullWidth" appearance="legacy">
-      <mat-label>Valor R$</mat-label>
-      <input
-      type="text"
-      [(ngModel)]="itens.valor"
-      name="valor"
-      [formControl] = "valor"
-      required
-      matInput placeholder="0.00,00"
-      mask="separator" thousandSeparator =".">
+      <mat-label>Valor {{itens.valor | currency}}</mat-label>
+      <input type="number" [(ngModel)]="itens.valor" name="valor"
+      [formControl]="valor" required matInput>
       <mat-icon matSuffix>attach_money</mat-icon>
     </mat-form-field>
 
-    <button [disabled]="!validaCampos()" class="fullWidth" mat-flat-button color="primary">Cadastrar</button>
-    <button routerLink="../" class="fullWidth" mat-stroked-button color="warn">Cancelar</button>
+    <button [disabled]="!validaCampos()" (click)="create()" class="fullWidth" mat-flat-button
+      color="primary">Cadastrar</button>
+    <button routerLink="../../" class="fullWidth" mat-stroked-button color="warn">Cancelar</button>
 
   </form>
 </div>
