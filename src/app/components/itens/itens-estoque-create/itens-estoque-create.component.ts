@@ -37,7 +37,7 @@ export class ItensEstoqueCreateComponent implements OnInit {
   create(): void {
     this.itesnService.create(this.itens).subscribe(response =>{
       this.toast.success('Itens de estoque salvo com sucesso','Novo')
-      this.router.navigate(['chamados'])
+      this.router.navigate(['itensEstoques'])
     },ex =>{
       this.toast.error(ex.error().error());
     })
