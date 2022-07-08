@@ -1,8 +1,12 @@
+import { ItensEstoqueService } from 'src/app/services/itens-estoque.service';
+import { ItensEstoque } from './../../itens/ItensEstoque';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ChamadoService } from 'src/app/services/chamado.service';
 import { Chamado } from '../../chamado/Chamado';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-pedido-itens-estoque',
@@ -11,25 +15,51 @@ import { Chamado } from '../../chamado/Chamado';
 })
 export class PedidoItensEstoqueComponent implements OnInit {
 
-  ELEMENT_DATA: Chamado[] = [];
-  ELEMENT_DATASTATUS: Chamado[] = [];
-  dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
-  displayedColumns: string[] = ['id', 'titulo', 'nomeCliente', 'dataAbertura', 'status', 'prioridade', 'nomeTecnico', 'acoes']
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  constructor(
+    private chamadoService: ChamadoService,
+    private toastrService: ToastrService,
+    private actvRouter: ActivatedRoute,
+    private itensEstoqueService: ItensEstoqueService) { }
+
+    @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
 
-  constructor(private chamadoService: ChamadoService) { }
+    ELEMENT_DATA: ItensEstoque[] = [];
+    displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade','acoes'];
+    dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
+
+    chamado: Chamado = {
+      id: '',
+      dataAbertura: '',
+      dataFechamento: '',
+      status: '',
+      prioridade: '',
+      titulo: '',
+      observacoes: '',
+      cliente: '',
+      nomeCliente: '',
+      tecnico: '',
+      nomeTecnico: ''
+    };
 
   ngOnInit(): void {
-    this.findAll();
+    this.chamado.id = this.actvRouter.snapshot.paramMap.get('id');
+    this.findByIdChamado();
+    this.findAllItensEstoque();
   }
 
-  findAll() {
-    return this.chamadoService.findAll().subscribe(response => {
-      this.ELEMENT_DATA = response;
-      this.dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
-      this.dataSource.paginator = this.paginator;
-    })
+  findAllItensEstoque() {
+    this.itensEstoqueService.findAll().subscribe(resposta => {
+      this.ELEMENT_DATA = resposta;
+      this.dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator
+    });
+  }
+
+  findByIdChamado(): void {
+    this.chamadoService.findById(this.chamado.id).subscribe(response => {
+      this.chamado = response;
+    }, ex => { this.toastrService.warning('Chamado não encontrado') })
   }
 
   applyFilter(event: Event) {
@@ -40,34 +70,15 @@ export class PedidoItensEstoqueComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+/*
+  addPerfil(check: any): void {
+    if (this.ELEMENT_DATA.includes(check)) {
+      this.ELEMENT_DATA.splice(this.cliente.perfis.indexOf(perfil), 1);
+    } else {
+      this.cliente.perfis.push(perfil);
+    }
+    console.log("perfis: ",this.cliente.perfis);
 
-  filterStatus(status: any): string {
-    if (status == '0') { return 'ABERTO' }
-    else if (status == '1') { return 'ANDAMENTO' }
-    else if (status == '2') { return 'CANCELADO' }
-    else { return 'ENCERRADO' }
   }
-
-  filterPrioridade(prioridade: any): string {
-    if (prioridade == '0') {
-      return 'BAIXA'
-    } else if (prioridade == '1') {
-      return 'MÉDIA'
-    } else { return 'ALTA' }
-  }
-
-  orderByStatus(selec: any): void{
-
-    let filterRaio: Chamado[] = [];
-
-    this.ELEMENT_DATA.forEach(element => {
-      if(element.status == selec){
-        filterRaio.push(element);
-      }
-    })
-    this.ELEMENT_DATASTATUS = filterRaio;
-    this.dataSource = new MatTableDataSource<Chamado>(filterRaio);
-    this.dataSource.paginator = this.paginator;
-  }
-
+  */
 }

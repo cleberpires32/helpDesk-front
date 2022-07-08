@@ -1,3 +1,10 @@
+
+div.box {
+	width: 150px;
+	display: inline-block;
+  margin-right: 10%;
+}
+
 .container {
   width: 90%;
   margin: auto;
@@ -24,8 +31,4 @@ h1 {
   color: rgb(209, 47, 47);
 }
 
-mat-radio-group {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-}
+
