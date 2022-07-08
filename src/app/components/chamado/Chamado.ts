@@ -11,4 +11,5 @@ export interface Chamado
   nomeCliente: string;
   tecnico: any;
   nomeTecnico: string;
+  itensPedidoEstoque:[]
 }

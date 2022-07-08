@@ -39,7 +39,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
       cliente: '',
       nomeCliente: '',
       tecnico: '',
-      nomeTecnico: ''
+      nomeTecnico: '',
+      itensPedidoEstoque:[]
     };
 
   ngOnInit(): void {
