@@ -1,3 +1,4 @@
+import { ItensEstoque } from './../itens/ItensEstoque';
 export interface Chamado
 {
   id: any;
@@ -11,5 +12,5 @@ export interface Chamado
   nomeCliente: string;
   tecnico: any;
   nomeTecnico: string;
-  itensPedidoEstoque:[]
+  itensEstoque: ItensEstoque[]
 }

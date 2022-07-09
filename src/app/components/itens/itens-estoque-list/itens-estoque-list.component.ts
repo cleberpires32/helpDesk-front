@@ -12,13 +12,13 @@ import { ItensEstoque } from '../ItensEstoque';
   styleUrls: ['./itens-estoque-list.component.css']
 })
 export class ItensEstoqueListComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-
-  ELEMENT_DATA: ItensEstoque[] = [];
 
   constructor(private itensEstoqueService: ItensEstoqueService) { }
 
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+
+  ELEMENT_DATA: ItensEstoque[] = [];
   displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade','valor','acoes'];
   dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
 
@@ -28,8 +28,6 @@ export class ItensEstoqueListComponent implements OnInit {
 
   findAll() {
     this.itensEstoqueService.findAll().subscribe(resposta => {
-      console.log(resposta);
-
       this.ELEMENT_DATA = resposta;
       this.dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator
