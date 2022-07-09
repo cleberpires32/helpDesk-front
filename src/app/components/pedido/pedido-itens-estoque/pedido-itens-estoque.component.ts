@@ -1,8 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Chamado } from './../../chamado/Chamado';
 import { ItensEstoqueService } from 'src/app/services/itens-estoque.service';
 import { ItensEstoque } from './../../itens/ItensEstoque';
 import { Component, OnInit, QueryList, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ChamadoService } from 'src/app/services/chamado.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -22,7 +23,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
     private chamadoService: ChamadoService,
     private toastrService: ToastrService,
     private actvRouter: ActivatedRoute,
-    private itensEstoqueService: ItensEstoqueService) {
+    private itensEstoqueService: ItensEstoqueService,
+    private route: Router) {
     this.toppings = fb.group({
       idItens: false
     });
@@ -58,6 +60,17 @@ export class PedidoItensEstoqueComponent implements OnInit {
     this.chamado.id = this.actvRouter.snapshot.paramMap.get('id');
     this.findByIdChamado();
     this.findAllItensEstoque();
+  }
+
+  update(): void{
+    console.log(this.chamado);
+
+    this.chamadoService.update(this.chamado).subscribe(() =>{
+      this.toastrService.success('Pedidos de Estoque vinculado com sucesso','Adiciona Itens')
+      this.route.navigate(['chamados'])
+    },ex =>{
+      this.toastrService.error(ex.error.error);
+    })
   }
 
   findAllItensEstoque() {
