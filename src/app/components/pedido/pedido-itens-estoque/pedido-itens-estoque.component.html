@@ -31,15 +31,16 @@
         <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="acoes">
-        <th mat-header-cell *matHeaderCellDef> Ações </th>
-        <td mat-cell *matCellDef="let element">
-          <mat-selection-list>
-            <mat-list-option  (click)="selectCheckbox(element)">
-            </mat-list-option>
-          </mat-selection-list>
+      <ng-container matColumnDef="vinculo">
+        <th mat-header-cell *matHeaderCellDef> Vinculo </th>
+        <td  mat-cell *matCellDef="let element">
+        <input type="checkbox"
+         [(ngModel)]="element.vinculoComChamado"
+          name="vinculoComChamado"
+         (click)="adicionaVinculoitenes(element)">
         </td>
       </ng-container>
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -47,5 +48,3 @@
     <mat-paginator #paginatorABV [pageSize]="3" [pageSizeOptions]="[2]" [showFirstLastButtons]="true"></mat-paginator>
   </div>
 </div>
-
-

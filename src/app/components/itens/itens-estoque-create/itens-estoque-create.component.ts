@@ -28,7 +28,8 @@ export class ItensEstoqueCreateComponent implements OnInit {
     descricao:  '',
     codigo:     '',
     quantidade: '',
-    valor:      ''
+    valor:      '',
+    vinculoComChamado: false
   }
 
   ngOnInit(): void {

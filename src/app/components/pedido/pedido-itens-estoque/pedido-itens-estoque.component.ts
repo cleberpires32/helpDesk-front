@@ -35,11 +35,10 @@ export class PedidoItensEstoqueComponent implements OnInit {
 
   toppings: FormGroup;
   ELEMENT_DATA: ItensEstoque[] = [];
-  displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade', 'acoes'];
+  displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade', 'vinculo'];
   dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
 
-  check: string[] = [];
-  itensPedidoEstoque: ItensEstoque[] = []
+  intensestouqe : ItensEstoque[] = []
 
   chamado: Chamado = {
     id: '',
@@ -62,13 +61,13 @@ export class PedidoItensEstoqueComponent implements OnInit {
     this.findAllItensEstoque();
   }
 
-  update(): void{
-    console.log(this.chamado);
+  update(): void {
+    this.chamadoService.update(this.chamado).subscribe((response) => {
+      console.log(response);
 
-    this.chamadoService.update(this.chamado).subscribe(() =>{
-      this.toastrService.success('Pedidos de Estoque vinculado com sucesso','Adiciona Itens')
+      this.toastrService.success('Pedidos de Estoque vinculado com sucesso', 'Adiciona Itens')
       this.route.navigate(['chamados'])
-    },ex =>{
+    }, ex => {
       this.toastrService.error(ex.error.error);
     })
   }
@@ -94,13 +93,45 @@ export class PedidoItensEstoqueComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+
+    console.log(this.dataSource);
   }
 
-  selectCheckbox(event: any) {
-    if (!this.chamado.itensEstoque.includes(event)) {
-      this.chamado.itensEstoque.push(event);
+
+  adicionaVinculoitenes(itens: ItensEstoque) {
+    console.log('começando');
+
+    /*
+    if (this.dataSource.data.includes(itens)) {
+      console.log('primeiro');
+
+      this.chamado.itensEstoque.push(itens);
+
     } else {
-      this.chamado.itensEstoque.splice(this.chamado.itensEstoque.indexOf(event), 1)
+
+      this.chamado.itensEstoque.splice(this.chamado.itensEstoque.indexOf(itens), 1)
+      console.log('segundo');
+      this.chamado.itensEstoque.forEach(i=>{console.log(i);
+      });
     }
-  }
+
+*/
+
+
+    this.dataSource.data.map(i => {
+      if (!i.vinculoComChamado && i === itens) {
+        console.log('adicionei');
+        this.chamado.itensEstoque.push(itens);
+      } else {
+        if (i.vinculoComChamado && i === itens)
+        console.log('se não remove');
+         // i.vinculoComChamado = itens.vinculoComChamado
+          //this.chamado.itensEstoque.splice(this.chamado.itensEstoque.indexOf(itens), 1)
+      }
+    })
+    this.dataSource = this.dataSource;
+    console.log("valor boolean entrada; ", this.chamado.itensEstoque);
+    }
+
+
 }

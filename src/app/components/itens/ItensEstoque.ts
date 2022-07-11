@@ -3,5 +3,6 @@ export interface ItensEstoque {
   codigo:     string;
   descricao:  string;
   quantidade: string;
-  valor:      string
+  valor:      string;
+  vinculoComChamado: boolean;
 }
