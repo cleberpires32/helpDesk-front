@@ -24,7 +24,6 @@ export class TecnicoService {
   }
 
   update(tecnico: Tecnico): Observable<Tecnico> {
-    console.log("componente tecnico: ", tecnico.perfis);
     return this.http.put<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos/${tecnico.id}`, tecnico)
   }
 

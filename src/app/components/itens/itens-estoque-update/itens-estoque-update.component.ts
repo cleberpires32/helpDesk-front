@@ -1,4 +1,5 @@
-import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,15 +15,17 @@ export class ItensEstoqueUpdateComponent implements OnInit {
 
   constructor(
     private itensEstoqueService: ItensEstoqueService,
-    private routerActive: ActivatedRoute) { }
+    private routerActive: ActivatedRoute,
+    private toast: ToastrService,
+    private route: Router) { }
 
   itensEstoque: ItensEstoque = {
 
-    id:         '',
-    codigo:     '',
-    descricao:  '',
+    id: '',
+    codigo: '',
+    descricao: '',
     quantidade: '',
-    valor:      '',
+    valor: '',
     vinculoComChamado: false,
     quantidadeSolicitada: ''
   }
@@ -36,9 +39,17 @@ export class ItensEstoqueUpdateComponent implements OnInit {
   findById() {
     this.itensEstoqueService.findById(this.itensEstoque.id).subscribe(resposta => {
       this.itensEstoque = resposta;
+    })
+  }
+
+  update() {
+    this.itensEstoqueService.update(this.itensEstoque).subscribe(response =>{
+      this.itensEstoque = response;
+      this.toast.success('Itens de Estoque atuzalizado com sucesso')
+      this.route.navigate(['itensEstoques'])
+    }, ex =>{
+      this.toast.error('Não foi possível atualizar');
     });
   }
-  update(){}
-
 
 }

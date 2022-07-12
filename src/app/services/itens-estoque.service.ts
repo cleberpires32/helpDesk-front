@@ -15,6 +15,10 @@ export class ItensEstoqueService {
     return this.http.post<ItensEstoque>(`${API_CONFIG.baseUrl}/itensEstoques`, itensEstoque);
   }
 
+  update(itensEstoque: ItensEstoque): Observable<ItensEstoque>{
+    return this.http.put<ItensEstoque>(`${API_CONFIG.baseUrl}/itensEstoques/${itensEstoque.id}`, itensEstoque)
+  }
+
   findAll(): Observable<ItensEstoque[]>{
     return this.http.get<ItensEstoque[]>(`${API_CONFIG.baseUrl}/itensEstoques`)
   }

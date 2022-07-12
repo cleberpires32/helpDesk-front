@@ -1,23 +1,13 @@
 <div class="container mat-elevation-z8">
   <form action="">
-    <h1 class="fullWidth">Atualizar Cliente</h1>
-
-    <mat-form-field class="fullWidth" appearance="legacy">
-      <mat-label>Id</mat-label>
-      <input
-      [(ngModel)]="itensEstoque.id"
-      name="id"
-      maxlength="50"
-      matInput placeholder="Placeholder">
-    </mat-form-field>
+    <h1 class="fullWidth">Atualizar Item de Estoque</h1>
 
     <mat-form-field class="fullWidth" appearance="legacy">
       <mat-label>Descrição</mat-label>
       <input
       [(ngModel)]="itensEstoque.descricao"
       name="descricao"
-      mask="000.000.000-00"
-      required
+      type="text"
       matInput placeholder="Placeholder">
     </mat-form-field>
 
@@ -35,6 +25,15 @@
       <input
       [(ngModel)]="itensEstoque.quantidade"
       name="quantidade"
+      type="text"
+      matInput placeholder="Placeholder">
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth" appearance="legacy">
+      <mat-label>Valor</mat-label>
+      <input
+      [(ngModel)]="itensEstoque.valor"
+      name="valor"
       type="text"
       matInput placeholder="Placeholder">
     </mat-form-field>
