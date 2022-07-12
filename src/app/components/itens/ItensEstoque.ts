@@ -5,4 +5,5 @@ export interface ItensEstoque {
   quantidade: string;
   valor:      string;
   vinculoComChamado: boolean;
+  quantidadeSolicitada: string;
 }
