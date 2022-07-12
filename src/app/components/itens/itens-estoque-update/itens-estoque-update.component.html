@@ -1,1 +1,46 @@
-<p>itens-estoque-update works!</p>
+<div class="container mat-elevation-z8">
+  <form action="">
+    <h1 class="fullWidth">Atualizar Cliente</h1>
+
+    <mat-form-field class="fullWidth" appearance="legacy">
+      <mat-label>Id</mat-label>
+      <input
+      [(ngModel)]="itensEstoque.id"
+      name="id"
+      maxlength="50"
+      matInput placeholder="Placeholder">
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth" appearance="legacy">
+      <mat-label>Descrição</mat-label>
+      <input
+      [(ngModel)]="itensEstoque.descricao"
+      name="descricao"
+      mask="000.000.000-00"
+      required
+      matInput placeholder="Placeholder">
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth" appearance="legacy">
+      <mat-label>Código</mat-label>
+      <input
+      [(ngModel)]="itensEstoque.codigo"
+      name="codigo"
+      required
+      matInput placeholder="Placeholder">
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth" appearance="legacy">
+      <mat-label>Quantidade</mat-label>
+      <input
+      [(ngModel)]="itensEstoque.quantidade"
+      name="quantidade"
+      type="text"
+      matInput placeholder="Placeholder">
+    </mat-form-field>
+
+    <button (click)="update()"  class="fullWidth" mat-flat-button color="primary">Atualizar</button>
+    <button routerLink="../../" class="fullWidth" mat-stroked-button color="warn">Cancelar</button>
+
+  </form>
+</div>

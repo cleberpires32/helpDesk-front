@@ -18,4 +18,8 @@ export class ItensEstoqueService {
   findAll(): Observable<ItensEstoque[]>{
     return this.http.get<ItensEstoque[]>(`${API_CONFIG.baseUrl}/itensEstoques`)
   }
+
+  findById(id: any): Observable<ItensEstoque>{
+    return this.http.get<ItensEstoque>(`${API_CONFIG.baseUrl}/itensEstoques/${id}`)
+  }
 }
