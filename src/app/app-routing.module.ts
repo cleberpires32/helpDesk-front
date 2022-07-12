@@ -1,3 +1,4 @@
+import { ItensEstoqueUpdateComponent } from './components/itens/itens-estoque-update/itens-estoque-update.component';
 import { PedidoItensEstoqueComponent } from './components/pedido/pedido-itens-estoque/pedido-itens-estoque.component';
 import { ItensEstoqueListComponent } from './components/itens/itens-estoque-list/itens-estoque-list.component';
 import { ItensEstoqueCreateComponent } from './components/itens/itens-estoque-create/itens-estoque-create.component';
@@ -39,7 +40,8 @@ const routes: Routes = [
         { path: 'chamados/read/:id', component: ChamadoReadComponent},
         { path: 'chamados/pedidosChamado/:id', component: PedidoItensEstoqueComponent},
         { path: 'itensEstoques', component: ItensEstoqueListComponent},
-        { path: 'itensEstoques/create', component: ItensEstoqueCreateComponent}
+        { path: 'itensEstoques/create', component: ItensEstoqueCreateComponent},
+        { path: 'itensEstoques/update/:id', component: ItensEstoqueUpdateComponent}
       ]
   },
   {

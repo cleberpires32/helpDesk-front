@@ -43,6 +43,7 @@ import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { ItensEstoqueListComponent } from './components/itens/itens-estoque-list/itens-estoque-list.component';
 import { PedidoItensEstoqueComponent } from './components/pedido/pedido-itens-estoque/pedido-itens-estoque.component';
+import { ItensEstoqueUpdateComponent } from './components/itens/itens-estoque-update/itens-estoque-update.component';
 
 registerLocaleData(ptBr);
 
@@ -67,7 +68,8 @@ registerLocaleData(ptBr);
     ChamadoReadComponent,
     ItensEstoqueCreateComponent,
     ItensEstoqueListComponent,
-    PedidoItensEstoqueComponent
+    PedidoItensEstoqueComponent,
+    ItensEstoqueUpdateComponent
   ],
   imports: [
     BrowserModule,
