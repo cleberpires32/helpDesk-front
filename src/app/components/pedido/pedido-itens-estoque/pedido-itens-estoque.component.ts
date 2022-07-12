@@ -35,7 +35,7 @@ export class PedidoItensEstoqueComponent implements OnInit {
 
   toppings: FormGroup;
   ELEMENT_DATA: ItensEstoque[] = [];
-  displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade', 'vinculo'];
+  displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade','quantidade_solicitada', 'vinculo'];
   dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
 
   intensestouqe : ItensEstoque[] = []
