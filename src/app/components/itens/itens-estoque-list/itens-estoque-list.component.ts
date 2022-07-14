@@ -19,11 +19,17 @@ export class ItensEstoqueListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   ELEMENT_DATA: ItensEstoque[] = [];
-  displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade','valor','acoes'];
+  displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade', 'valor', 'acoes'];
   dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
 
   ngOnInit(): void {
     this.findAll();
+  }
+
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
   }
 
   findAll() {
@@ -41,5 +47,9 @@ export class ItensEstoqueListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  hiddenMatBadge(quantidade: any): Boolean {
+    if (quantidade <= 2) { return false } else return true;
   }
 }

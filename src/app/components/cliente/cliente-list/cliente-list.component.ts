@@ -19,7 +19,7 @@ export class ClienteListComponent implements OnInit {
 
   constructor(private clienteService: ClienteService) { }
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone', 'acoes'];
   dataSource = new MatTableDataSource<Cliente>(this.ELEMENT_DATA);;
 
   ngOnInit(): void {

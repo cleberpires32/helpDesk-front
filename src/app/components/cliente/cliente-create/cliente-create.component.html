@@ -33,14 +33,16 @@
     </mat-form-field>
 
     <mat-form-field class="fullWidth" appearance="legacy">
-      <mat-label>Email</mat-label>
+      <mat-label>Telefone</mat-label>
       <input
-      [(ngModel)]="cliente.email"
-      name="email"
-      [formControl] = "email"
+      [(ngModel)]="cliente.telefone"
+      type="text"
+      name="telefone"
+      [formControl] = "telefone"
       required
-      matInput placeholder="Placeholder">
-      <mat-icon matSuffix>email</mat-icon>
+      matInput placeholder="Placeholder"
+      mask="(00) 0-0000-0000">
+      <mat-icon matSuffix>phone</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="fullWidth" appearance="legacy">

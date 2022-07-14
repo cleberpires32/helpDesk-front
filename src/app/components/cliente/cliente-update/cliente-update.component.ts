@@ -14,7 +14,7 @@ export class ClienteUpdateComponent implements OnInit {
 
   nome: FormControl = new FormControl(null, Validators.minLength(3));
   cpf: FormControl = new FormControl(null, Validators.required);
-  email: FormControl = new FormControl(null, Validators.email);
+  telefone: FormControl = new FormControl(null, Validators.required);
   senha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
@@ -27,7 +27,7 @@ export class ClienteUpdateComponent implements OnInit {
     id: '',
     nome: '',
     cpf: '',
-    email: '',
+    telefone: '',
     senha: '',
     perfis: [],
     dataCriacao: ''
@@ -75,7 +75,7 @@ export class ClienteUpdateComponent implements OnInit {
   }
 
   validaCampos(): boolean {
-    return this.nome.valid && this.cpf.valid && this.email.valid && this.senha.valid;
+    return this.nome.valid && this.cpf.valid && this.telefone.valid && this.senha.valid;
   }
 
   cleckedPerfis(perfis: String[]): void {
