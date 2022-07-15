@@ -35,10 +35,10 @@ export class PedidoItensEstoqueComponent implements OnInit {
 
   toppings: FormGroup;
   ELEMENT_DATA: ItensEstoque[] = [];
-  displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade','quantidade_solicitada', 'vinculo'];
+  displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade', 'quantidade_solicitada', 'vinculo'];
   dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
 
-  intensestouqe : ItensEstoque[] = []
+  intensestouqe: ItensEstoque[] = []
 
   chamado: Chamado = {
     id: '',
@@ -54,6 +54,16 @@ export class PedidoItensEstoqueComponent implements OnInit {
     nomeTecnico: '',
     itensEstoque: []
   };
+
+  itens: ItensEstoque = {
+    id: '',
+    codigo: '',
+    descricao: '',
+    quantidade: '',
+    valor: '',
+    vinculoComChamado: false,
+    quantidadeSolicitada: ''
+  }
 
   ngOnInit(): void {
     this.chamado.id = this.actvRouter.snapshot.paramMap.get('id');
@@ -93,45 +103,21 @@ export class PedidoItensEstoqueComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-
-    console.log(this.dataSource);
   }
 
 
-  adicionaVinculoitenes(itens: ItensEstoque) {
-    console.log('começando');
+  adicionaVinculoitenes(itensPagina: ItensEstoque) {
 
-    /*
-    if (this.dataSource.data.includes(itens)) {
-      console.log('primeiro');
-
-      this.chamado.itensEstoque.push(itens);
-
-    } else {
-
-      this.chamado.itensEstoque.splice(this.chamado.itensEstoque.indexOf(itens), 1)
-      console.log('segundo');
-      this.chamado.itensEstoque.forEach(i=>{console.log(i);
-      });
-    }
-
-*/
-
+    this.itens = itensPagina;
 
     this.dataSource.data.map(i => {
-      if (!i.vinculoComChamado && i === itens) {
-        console.log('adicionei');
-        this.chamado.itensEstoque.push(itens);
-      } else {
-        if (i.vinculoComChamado && i === itens)
-        console.log('se não remove');
-         // i.vinculoComChamado = itens.vinculoComChamado
-          //this.chamado.itensEstoque.splice(this.chamado.itensEstoque.indexOf(itens), 1)
+
+      if (!this.itens.vinculoComChamado && i === this.itens) {
+        this.chamado.itensEstoque.push(this.itens);
+      } else if (this.itens.vinculoComChamado && i === this.itens) {
+        this.chamado.itensEstoque.splice(this.chamado.itensEstoque.indexOf(itensPagina), 1)
       }
     })
     this.dataSource = this.dataSource;
-    console.log("valor boolean entrada; ", this.chamado.itensEstoque);
-    }
-
-
+  }
 }
