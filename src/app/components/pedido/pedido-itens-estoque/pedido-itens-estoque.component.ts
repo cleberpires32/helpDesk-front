@@ -68,6 +68,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
   ngOnInit(): void {
     this.chamado.id = this.actvRouter.snapshot.paramMap.get('id');
     this.findByIdChamado();
+    console.log(this.chamado);
+
     this.findAllItensEstoque();
   }
 
@@ -93,6 +95,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
   findByIdChamado(): void {
     this.chamadoService.findById(this.chamado.id).subscribe(response => {
       this.chamado = response;
+      console.log(this.chamado);
+
     }, ex => { this.toastrService.warning('Chamado não encontrado') })
   }
 
