@@ -45,6 +45,7 @@ import { ItensEstoqueListComponent } from './components/itens/itens-estoque-list
 import { PedidoItensEstoqueComponent } from './components/pedido/pedido-itens-estoque/pedido-itens-estoque.component';
 import { ItensEstoqueUpdateComponent } from './components/itens/itens-estoque-update/itens-estoque-update.component';
 
+import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
 
 registerLocaleData(ptBr);
@@ -92,7 +93,8 @@ registerLocaleData(ptBr);
     MatCheckboxModule,
     NgxMaskModule.forRoot(),
     MatRadioModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatExpansionModule
 
   ],
   providers: [AuthInterceptorProvider, { provide: LOCALE_ID, useValue: 'pt' },

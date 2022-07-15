@@ -24,3 +24,7 @@ h1 {
   color: rgb(209, 47, 47);
 }
 
+a {
+  cursor: pointer;
+  }
+
