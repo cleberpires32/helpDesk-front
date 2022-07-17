@@ -32,16 +32,11 @@ export class PedidoItensEstoqueComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-
   toppings: FormGroup;
   ELEMENT_DATA: ItensEstoque[] = [];
   itens_selecionados: ItensEstoque[] = [];
   displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade', 'quantidade_solicitada', 'vinculo'];
   dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
-
-  intensestouqe: ItensEstoque[] = []
-
-  arra: any[] = []
 
   chamado: Chamado = {
     id: '',
@@ -72,26 +67,21 @@ export class PedidoItensEstoqueComponent implements OnInit {
     this.chamado.id = this.actvRouter.snapshot.paramMap.get('id');
     this.findByIdChamado();
     this.findAllItensEstoque();
-    console.log(this.toppings);
-
   }
 
   update(): void {
-    console.log("enviando lista de itens ", this.chamado.itensEstoque);
-    console.log("boolean: ", this.chamado.itensEstoque.length === 2);
+
     if (this.chamado.itensEstoque.length === 0) {
-
-      console.log(this.chamado.itensEstoque.filter(f => f.quantidade == '0'));
-
-
       this.toastrService.warning("Valores obrigatórios como checkBox ou quantidade solicitada")
     }
-    this.chamadoService.update(this.chamado).subscribe((response) => {
-      this.toastrService.success('Pedidos de Estoque vinculado com sucesso', 'Adiciona Itens')
-      this.route.navigate(['chamados'])
-    }, ex => {
-      this.toastrService.error(ex.error.error);
-    })
+    else {
+      this.chamadoService.update(this.chamado).subscribe((response) => {
+        this.toastrService.success('Pedidos de Estoque vinculado com sucesso', 'Adiciona Itens')
+        this.route.navigate(['chamados'])
+      }, ex => {
+        this.toastrService.error(ex.error.error);
+      })
+    }
 
   }
 
@@ -118,25 +108,21 @@ export class PedidoItensEstoqueComponent implements OnInit {
     }
   }
 
-
-  adicionaVinculoitenes(itensPagina: ItensEstoque) {
+  vincularItensChamado(itensPagina: ItensEstoque) {
     this.itens = itensPagina;
     this.chamado.itensEstoque = []
-    //console.log('todos itens',this.chamado.itensEstoque);
-    this.dataSource.data.map(i => {
 
+    this.dataSource.data.map(i => {
       if (!this.itens.vinculoComChamado && i === this.itens) {
-        //this.chamado.itensEstoque.push(this.itens);
-        this.itens_selecionados.push(this.itens);
-        console.log('adicionando: ', this.itens_selecionados);
-      } else if (this.itens.vinculoComChamado && i === this.itens) {
-        //this.chamado.itensEstoque.splice(this.chamado.itensEstoque.indexOf(itensPagina), 1)
-        this.itens_selecionados.splice(this.itens_selecionados.indexOf(itensPagina), 1)
-        this.chamado.itensEstoque = []
+        this.itens_selecionados.push(this.itens)
       }
+      else
+        if (this.itens.vinculoComChamado && i === this.itens) {
+          this.itens_selecionados.splice(this.itens_selecionados.indexOf(itensPagina), 1)
+          this.chamado.itensEstoque = []
+        }
     })
     this.chamado.itensEstoque = this.itens_selecionados;
-    console.log('itens de chamado: ', this.chamado.itensEstoque);
     this.dataSource = this.dataSource;
   }
 }
