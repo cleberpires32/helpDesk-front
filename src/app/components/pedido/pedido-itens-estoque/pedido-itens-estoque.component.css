@@ -34,3 +34,31 @@ h1 {
 a {
   cursor: pointer;
   }
+
+  .demo-table {
+    width: 100%;
+  }
+
+  .mat-column-id {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+  }
+
+  .mat-column-descricao {
+    padding-left: 16px;
+
+  }
+  mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    font-size: initial;
+  }
+  .fab{
+      display: flex;
+      justify-content: center;
+      width: 120px;
+  }
