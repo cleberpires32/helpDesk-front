@@ -35,13 +35,13 @@ export class PedidoItensEstoqueComponent implements OnInit {
 
   toppings: FormGroup;
   ELEMENT_DATA: ItensEstoque[] = [];
-  itens_selecionados: ItensEstoque[]=[];
+  itens_selecionados: ItensEstoque[] = [];
   displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade', 'quantidade_solicitada', 'vinculo'];
   dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
 
   intensestouqe: ItensEstoque[] = []
 
-  arra : any[]= []
+  arra: any[] = []
 
   chamado: Chamado = {
     id: '',
@@ -76,16 +76,16 @@ export class PedidoItensEstoqueComponent implements OnInit {
 
   }
 
-  update(): void{
-    console.log("enviando lista de itens ",this.chamado.itensEstoque);
-    console.log("boolean: ",this.chamado.itensEstoque.length === 2);
-if(this.chamado.itensEstoque.length === 0){
+  update(): void {
+    console.log("enviando lista de itens ", this.chamado.itensEstoque);
+    console.log("boolean: ", this.chamado.itensEstoque.length === 2);
+    if (this.chamado.itensEstoque.length === 0) {
 
-  console.log(this.chamado.itensEstoque.filter(f => f.quantidade == '0'));
+      console.log(this.chamado.itensEstoque.filter(f => f.quantidade == '0'));
 
 
-   this.toastrService.warning("Valores obrigatórios como checkBox ou quantidade solicitada")
-}
+      this.toastrService.warning("Valores obrigatórios como checkBox ou quantidade solicitada")
+    }
     this.chamadoService.update(this.chamado).subscribe((response) => {
       this.toastrService.success('Pedidos de Estoque vinculado com sucesso', 'Adiciona Itens')
       this.route.navigate(['chamados'])
@@ -121,52 +121,33 @@ if(this.chamado.itensEstoque.length === 0){
 
   adicionaVinculoitenes(itensPagina: ItensEstoque) {
     this.itens = itensPagina;
-    this.chamado.itensEstoque =[]
- //console.log('todos itens',this.chamado.itensEstoque);
+    this.chamado.itensEstoque = []
+    //console.log('todos itens',this.chamado.itensEstoque);
     this.dataSource.data.map(i => {
 
       if (!this.itens.vinculoComChamado && i === this.itens) {
         //this.chamado.itensEstoque.push(this.itens);
         this.itens_selecionados.push(this.itens);
-        console.log('adicionando: ',this.itens_selecionados);
+        console.log('adicionando: ', this.itens_selecionados);
       } else if (this.itens.vinculoComChamado && i === this.itens) {
         //this.chamado.itensEstoque.splice(this.chamado.itensEstoque.indexOf(itensPagina), 1)
-        this.itens_selecionados.splice(this.itens_selecionados.indexOf(itensPagina),1)
-        this.chamado.itensEstoque =[]
+        this.itens_selecionados.splice(this.itens_selecionados.indexOf(itensPagina), 1)
+        this.chamado.itensEstoque = []
       }
     })
     this.chamado.itensEstoque = this.itens_selecionados;
-    console.log('itens de chamado: ',this.chamado.itensEstoque);
+    console.log('itens de chamado: ', this.chamado.itensEstoque);
 
 
     this.dataSource = this.dataSource;
   }
-  onSelection(e: any, v: any){
-    console.log("onselection console: ",e,v);
-   }
 
-  adicionaToDelete(itensEstoque: ItensEstoque){
-    this.chamado.itensEstoque.map(f => {
-console.log(f.id,"ids",itensEstoque.id,'resultado ',f.id === itensEstoque.id);
-
-      if(f.id === itensEstoque.id){
-        console.log("condição true: ",f.id == itensEstoque.id);
-        this.intensestouqe.push(itensEstoque)
-        //this.intensestouqe.splice(this.intensestouqe.indexOf(itensEstoque),1)
-        return
-      }
-    })
-/*
-    bool.filter(m =>  {
-            this.arra.push(itensEstoque)
-            variavel = m._selected
-            console.log("dentro do bool: ",variavel);
-          });
-          */
-  console.log("fora do bool: "," --- ",this.intensestouqe);
-
-
-
-
+  onSelection(event: boolean, i: ItensEstoque) {
+    if (event) {
+      this.intensestouqe.push(i)
+    } else {
+      this.intensestouqe.splice(this.intensestouqe.indexOf(i, 1))
+    }
+    console.log(this.intensestouqe);
   }
 }

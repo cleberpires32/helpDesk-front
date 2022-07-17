@@ -2,7 +2,9 @@
   <h1>Lançamentos</h1>
 
   <mat-accordion class="mat-elevation-z4">
+
     <mat-expansion-panel>
+
       <mat-expansion-panel-header>
         <mat-panel-title>
           Informações do Chamado
@@ -11,6 +13,7 @@
           Cliente: {{chamado.nomeCliente}}
         </mat-panel-description>
       </mat-expansion-panel-header>
+
       <form class="form">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Sumário</mat-label>
@@ -26,22 +29,17 @@
 
       <mat-label>Lista de itens vinculados</mat-label>
 
-<!--shoes.selectedOptions.selected   (click)="adicionaToDelete(item)"-->
-
       <mat-selection-list #shoes>
-        <mat-list-option ngForm="list" [value]="item" (selectedChange)="onSelection($event, shoes.selectedOptions)"
+        <mat-list-option ngForm="list" [value]="item" (selectedChange)="onSelection($event, item)"
          *ngFor="let item of chamado.itensEstoque" >
           |&nbsp; {{item.codigo}} |&nbsp; {{item.descricao}}
           <mat-divider></mat-divider>
         </mat-list-option>
 
       </mat-selection-list>
-
-
       <p>
-        {{shoes}}
         <button disabled="{{shoes.selectedOptions.selected.length == 0 }}" color="warn" (click)="update()" mat-raised-button class="full-width" color="warn">Remover o(s)
-          {{shoes.selectedOptions.selected.length}} iten(s)? dfdf:{{shoes._value}} -- {{shoes.selectedOptions.isSelected(chamado.id)}}</button>
+          {{shoes.selectedOptions.selected.length}} iten(s)?</button>
       </p>
 
 
