@@ -47,6 +47,7 @@ import { ItensEstoqueUpdateComponent } from './components/itens/itens-estoque-up
 
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import { PedidoItensEstoqueUpdateComponent } from './components/pedido/pedido-itens-estoque-update/pedido-itens-estoque-update.component';
 
 registerLocaleData(ptBr);
 
@@ -72,7 +73,8 @@ registerLocaleData(ptBr);
     ItensEstoqueCreateComponent,
     ItensEstoqueListComponent,
     PedidoItensEstoqueComponent,
-    ItensEstoqueUpdateComponent
+    ItensEstoqueUpdateComponent,
+    PedidoItensEstoqueUpdateComponent
   ],
   imports: [
     BrowserModule,
