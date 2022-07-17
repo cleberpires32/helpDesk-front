@@ -28,20 +28,7 @@
       </form>
 
       <mat-label>Lista de itens vinculados</mat-label>
-
-      <mat-selection-list #shoes>
-        <mat-list-option ngForm="list" [value]="item" (selectedChange)="onSelection($event, item)"
-         *ngFor="let item of chamado.itensEstoque" >
-          |&nbsp; {{item.codigo}} |&nbsp; {{item.descricao}}
-          <mat-divider></mat-divider>
-        </mat-list-option>
-
-      </mat-selection-list>
-      <p>
-        <button disabled="{{shoes.selectedOptions.selected.length == 0 }}" color="warn" (click)="update()" mat-raised-button class="full-width" color="warn">Remover o(s)
-          {{shoes.selectedOptions.selected.length}} iten(s)?</button>
-      </p>
-
+    <app-pedido-itens-estoque-delete></app-pedido-itens-estoque-delete>
 
     </mat-expansion-panel>
   </mat-accordion>

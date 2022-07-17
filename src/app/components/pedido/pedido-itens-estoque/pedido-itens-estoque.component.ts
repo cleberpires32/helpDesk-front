@@ -137,17 +137,6 @@ export class PedidoItensEstoqueComponent implements OnInit {
     })
     this.chamado.itensEstoque = this.itens_selecionados;
     console.log('itens de chamado: ', this.chamado.itensEstoque);
-
-
     this.dataSource = this.dataSource;
-  }
-
-  onSelection(event: boolean, i: ItensEstoque) {
-    if (event) {
-      this.intensestouqe.push(i)
-    } else {
-      this.intensestouqe.splice(this.intensestouqe.indexOf(i, 1))
-    }
-    console.log(this.intensestouqe);
   }
 }

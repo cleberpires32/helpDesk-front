@@ -1,0 +1,12 @@
+<mat-selection-list #shoes>
+  <mat-list-option ngForm="list" [value]="item" (selectedChange)="onSelection($event, item)"
+   *ngFor="let item of chamado.itensEstoque" >
+    |&nbsp; {{item.codigo}} |&nbsp; {{item.descricao}}
+    <mat-divider></mat-divider>
+  </mat-list-option>
+
+</mat-selection-list>
+<p>
+  <button disabled="{{shoes.selectedOptions.selected.length == 0 }}" color="warn" (click)="delete()" mat-raised-button class="full-width" color="warn">Remover
+    {{shoes.selectedOptions.selected.length}} iten(s)</button>
+</p>
