@@ -45,18 +45,6 @@
       <mat-icon matSuffix>fhone</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="fullWidth" appearance="legacy">
-      <mat-label>Senha</mat-label>
-      <input
-      [(ngModel)]="cliente.senha"
-      name="senha"
-      [formControl] = "senha"
-      required
-      type="password"
-      matInput placeholder="Placeholder">
-      <mat-icon matSuffix>password</mat-icon>
-    </mat-form-field>
-
     <button (click)="update()" [disabled]="!validaCampos()" class="fullWidth" mat-flat-button color="primary">Atualizar</button>
     <button routerLink="../../" class="fullWidth" mat-stroked-button color="warn">Cancelar</button>
 
