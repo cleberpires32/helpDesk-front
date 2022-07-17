@@ -1,3 +1,5 @@
+import { PedidoEstoque } from './../PedidoEstoque';
+import { PedidoEstoqueService } from './../../../services/pedido-estoque.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
@@ -37,19 +39,36 @@ export class PedidoItensEstoqueDeleteComponent implements OnInit {
 
   constructor(fb: FormBuilder,
     private chamadoService: ChamadoService,
-    private toastrService: ToastrService,
+    private toast: ToastrService,
     private actvRouter: ActivatedRoute,
     private itensEstoqueService: ItensEstoqueService,
+    private pedEstoqueService: PedidoEstoqueService,
     private route: Router) { }
 
   ngOnInit(): void {
     this.chamado.id = this.actvRouter.snapshot.paramMap.get('id');
     this.findByIdChamado();
     this.findAllItensEstoque();
+    this.prenchePedido();
   }
 
-  delete(){console.log('implementar delete items do chamado');
+  pedidoEstoque: PedidoEstoque = {
+    chamado_id: '',
+    itensEstoque_id: []
   }
+
+  delete() {
+    this.prenchePedido()
+console.log("entrei certo", this.pedidoEstoque.itensEstoque_id);
+
+    this.pedEstoqueService.delete(this.pedidoEstoque.chamado_id,this.pedidoEstoque.itensEstoque_id).subscribe(response => {
+      this.route.navigate(['chamados'])
+      this.toast.success('Itens de Estoques removido do chamado com sucesso', 'Removido')
+    })
+    this.pedidoEstoque.itensEstoque_id = []
+
+  }
+
 
   findAllItensEstoque() {
     this.itensEstoqueService.findAll().subscribe(resposta => {
@@ -61,7 +80,7 @@ export class PedidoItensEstoqueDeleteComponent implements OnInit {
   findByIdChamado(): void {
     this.chamadoService.findById(this.chamado.id).subscribe(response => {
       this.chamado = response;
-    }, ex => { this.toastrService.warning('Chamado não encontrado') })
+    }, ex => { this.toast.warning('Chamado não encontrado') })
   }
 
   onSelection(event: boolean, i: ItensEstoque) {
@@ -70,6 +89,13 @@ export class PedidoItensEstoqueDeleteComponent implements OnInit {
     } else {
       this.intensestouqe.splice(this.intensestouqe.indexOf(i, 1))
     }
-    console.log(this.intensestouqe);
   }
+
+  prenchePedido() {
+    this.pedidoEstoque.chamado_id = this.chamado.id
+    this.intensestouqe.forEach(f => {
+      this.pedidoEstoque.itensEstoque_id.push(f.id)
+    })
+  }
+
 }

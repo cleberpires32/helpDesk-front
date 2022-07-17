@@ -11,7 +11,7 @@ export class PedidoEstoqueService {
 
   constructor(private http: HttpClient) { }
 
-  delete(pedidoEstoque: PedidoEstoque): Observable<PedidoEstoque> {
-    return this.http.delete<PedidoEstoque>(`${API_CONFIG.baseUrl}/pedidosEstoques`);
+  delete(chamadoId: any, itensEstoqueId: any[]): Observable<PedidoEstoque> {
+    return this.http.delete<PedidoEstoque>(`${API_CONFIG.baseUrl}/pedidosEstoques/${chamadoId}/${itensEstoqueId}`);
   }
 }
