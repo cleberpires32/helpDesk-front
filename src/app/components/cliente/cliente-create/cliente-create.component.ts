@@ -43,8 +43,6 @@ export class ClienteCreateComponent implements OnInit {
     } else {
       this.cliente.perfis.push(perfil);
     }
-    console.log("perfis: ",this.cliente.perfis);
-
   }
 
   create(): void {
@@ -55,7 +53,7 @@ export class ClienteCreateComponent implements OnInit {
       this.router.navigate(['clientes'])
     }, ex => {
       if (ex.error.error) {
-        this.toast.error(ex.error.error);
+        this.toast.error(ex.error.message);
       }
     })
   }

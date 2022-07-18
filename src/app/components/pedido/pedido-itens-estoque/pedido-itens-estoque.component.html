@@ -27,7 +27,6 @@
         </mat-form-field>
       </form>
 
-      <mat-label>Lista de itens vinculados</mat-label>
     <app-pedido-itens-estoque-delete></app-pedido-itens-estoque-delete>
 
     </mat-expansion-panel>
@@ -40,7 +39,7 @@
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
-
+      <caption><h3>Estoque da Loja</h3></caption>
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> id </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>

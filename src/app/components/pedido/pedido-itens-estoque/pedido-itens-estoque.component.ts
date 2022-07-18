@@ -96,6 +96,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
   findByIdChamado(): void {
     this.chamadoService.findById(this.chamado.id).subscribe(response => {
       this.chamado = response;
+      console.log("chamado -->", this.chamado);
+
     }, ex => { this.toastrService.warning('Chamado não encontrado') })
   }
 

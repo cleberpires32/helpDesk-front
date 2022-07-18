@@ -59,8 +59,6 @@ export class PedidoItensEstoqueDeleteComponent implements OnInit {
 
   delete() {
     this.prenchePedido()
-console.log("entrei certo", this.pedidoEstoque.itensEstoque_id);
-
     this.pedEstoqueService.delete(this.pedidoEstoque.chamado_id,this.pedidoEstoque.itensEstoque_id).subscribe(response => {
       this.route.navigate(['chamados'])
       this.toast.success('Itens de Estoques removido do chamado com sucesso', 'Removido')
@@ -80,6 +78,8 @@ console.log("entrei certo", this.pedidoEstoque.itensEstoque_id);
   findByIdChamado(): void {
     this.chamadoService.findById(this.chamado.id).subscribe(response => {
       this.chamado = response;
+      console.log("buscando chamado pelo id: ",this.chamado);
+
     }, ex => { this.toast.warning('Chamado não encontrado') })
   }
 

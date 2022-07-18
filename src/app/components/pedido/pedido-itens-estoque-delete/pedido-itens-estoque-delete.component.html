@@ -1,7 +1,8 @@
+<mat-label>Lista de itens vinculados {{chamado.itensEstoque.length}} iten(s)</mat-label>
 <mat-selection-list #shoes>
   <mat-list-option ngForm="list" [value]="item" (selectedChange)="onSelection($event, item)"
    *ngFor="let item of chamado.itensEstoque" >
-    |&nbsp; {{item.codigo}} |&nbsp; {{item.descricao}}
+    |&nbsp; {{item.codigo}}&nbsp;|&nbsp;{{item.quantidadeSolicitada}}&nbsp;|&nbsp; {{item.descricao}}
     <mat-divider></mat-divider>
   </mat-list-option>
 

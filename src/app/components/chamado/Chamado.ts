@@ -1,3 +1,4 @@
+import { PedidoEstoque } from './../pedido/PedidoEstoque';
 import { ItensEstoque } from './../itens/ItensEstoque';
 export interface Chamado
 {
