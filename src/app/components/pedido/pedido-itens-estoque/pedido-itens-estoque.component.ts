@@ -8,8 +8,9 @@ import { ToastrService } from 'ngx-toastr';
 import { ChamadoService } from 'src/app/services/chamado.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatListOption } from '@angular/material/list';
+import { isEmpty } from 'rxjs';
 
 @Component({
   selector: 'app-pedido-itens-estoque',
@@ -38,6 +39,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
   displayedColumns: string[] = ['id', 'descricao', 'codigo', 'quantidade', 'quantidade_solicitada', 'vinculo'];
   dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
 
+  qt_solicitada: FormControl = new FormControl(null, Validators.required);
+  vinculoChamado: FormControl = new FormControl(null, Validators.required)
   chamado: Chamado = {
     id: '',
     dataAbertura: '',
@@ -70,6 +73,7 @@ export class PedidoItensEstoqueComponent implements OnInit {
   }
 
   update(): void {
+console.log("entrada de valor ",this.itens.quantidadeSolicitada);
 
     if (this.chamado.itensEstoque.length === 0) {
       this.toastrService.warning("Valores obrigatórios como checkBox ou quantidade solicitada")
@@ -96,9 +100,7 @@ export class PedidoItensEstoqueComponent implements OnInit {
   findByIdChamado(): void {
     this.chamadoService.findById(this.chamado.id).subscribe(response => {
       this.chamado = response;
-      console.log("chamado -->", this.chamado);
-
-    }, ex => { this.toastrService.warning('Chamado não encontrado') })
+     }, ex => { this.toastrService.warning('Chamado não encontrado') })
   }
 
   applyFilter(event: Event) {
@@ -126,5 +128,10 @@ export class PedidoItensEstoqueComponent implements OnInit {
     })
     this.chamado.itensEstoque = this.itens_selecionados;
     this.dataSource = this.dataSource;
+  }
+
+  validaCampos(): boolean {
+
+    return this.vinculoChamado.valid && this.qt_solicitada.valid
   }
 }
