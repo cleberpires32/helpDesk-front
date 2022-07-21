@@ -49,6 +49,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
 import { PedidoItensEstoqueUpdateComponent } from './components/pedido/pedido-itens-estoque-update/pedido-itens-estoque-update.component';
 import { PedidoItensEstoqueDeleteComponent } from './components/pedido/pedido-itens-estoque-delete/pedido-itens-estoque-delete.component';
+import { NotaFiscalComponent } from './components/pdfs/relatorio/nota-fiscal/nota-fiscal.component';
 
 registerLocaleData(ptBr);
 
@@ -76,7 +77,8 @@ registerLocaleData(ptBr);
     PedidoItensEstoqueComponent,
     ItensEstoqueUpdateComponent,
     PedidoItensEstoqueUpdateComponent,
-    PedidoItensEstoqueDeleteComponent
+    PedidoItensEstoqueDeleteComponent,
+    NotaFiscalComponent
   ],
   imports: [
     BrowserModule,
