@@ -49,7 +49,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
 import { PedidoItensEstoqueUpdateComponent } from './components/pedido/pedido-itens-estoque-update/pedido-itens-estoque-update.component';
 import { PedidoItensEstoqueDeleteComponent } from './components/pedido/pedido-itens-estoque-delete/pedido-itens-estoque-delete.component';
-import { NotaFiscalComponent } from './components/pdfs/relatorio/nota-fiscal/nota-fiscal.component';
+import { OrcamentoReadComponent } from './components/pdf/orcamento/orcamento-read/orcamento-read.component';
 
 registerLocaleData(ptBr);
 
@@ -78,7 +78,7 @@ registerLocaleData(ptBr);
     ItensEstoqueUpdateComponent,
     PedidoItensEstoqueUpdateComponent,
     PedidoItensEstoqueDeleteComponent,
-    NotaFiscalComponent
+    OrcamentoReadComponent
   ],
   imports: [
     BrowserModule,

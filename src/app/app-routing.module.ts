@@ -1,3 +1,4 @@
+import { OrcamentoReadComponent } from './components/pdf/orcamento/orcamento-read/orcamento-read.component';
 import { ItensEstoqueUpdateComponent } from './components/itens/itens-estoque-update/itens-estoque-update.component';
 import { PedidoItensEstoqueComponent } from './components/pedido/pedido-itens-estoque/pedido-itens-estoque.component';
 import { ItensEstoqueListComponent } from './components/itens/itens-estoque-list/itens-estoque-list.component';
@@ -41,7 +42,8 @@ const routes: Routes = [
         { path: 'chamados/pedidosChamado/:id', component: PedidoItensEstoqueComponent},
         { path: 'itensEstoques', component: ItensEstoqueListComponent},
         { path: 'itensEstoques/create', component: ItensEstoqueCreateComponent},
-        { path: 'itensEstoques/update/:id', component: ItensEstoqueUpdateComponent}
+        { path: 'itensEstoques/update/:id', component: ItensEstoqueUpdateComponent},
+        { path: 'chamados/:id/orcamento', component: OrcamentoReadComponent}
       ]
   },
   {
