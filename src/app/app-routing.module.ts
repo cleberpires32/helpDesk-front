@@ -1,3 +1,4 @@
+import { ServicoCreateComponent } from './components/servico/servico-create/servico-create.component';
 import { OrcamentoReadComponent } from './components/pdf/orcamento/orcamento-read/orcamento-read.component';
 import { ItensEstoqueUpdateComponent } from './components/itens/itens-estoque-update/itens-estoque-update.component';
 import { PedidoItensEstoqueComponent } from './components/pedido/pedido-itens-estoque/pedido-itens-estoque.component';
@@ -43,7 +44,8 @@ const routes: Routes = [
         { path: 'itensEstoques', component: ItensEstoqueListComponent},
         { path: 'itensEstoques/create', component: ItensEstoqueCreateComponent},
         { path: 'itensEstoques/update/:id', component: ItensEstoqueUpdateComponent},
-        { path: 'chamados/:id/orcamento', component: OrcamentoReadComponent}
+        { path: 'chamados/:id/orcamento', component: OrcamentoReadComponent},
+        { path: 'servicos/create', component: ServicoCreateComponent}
       ]
   },
   {

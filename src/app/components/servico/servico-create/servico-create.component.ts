@@ -1,4 +1,9 @@
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ServicoService } from './../../../services/servico.service';
+import { FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Servico } from '../servico';
 
 @Component({
   selector: 'app-servico-create',
@@ -7,9 +12,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicoCreateComponent implements OnInit {
 
-  constructor() { }
+  servico: Servico = {
+    id: '',
+    descricao: '',
+    valor: ''
+  }
+
+  desc: FormControl = new FormControl(null, Validators.required);
+  vlr: FormControl = new FormControl(null, Validators.required);
+
+  constructor(
+    private servicoService: ServicoService,
+    private toast: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
+
+  }
+
+  create(): void {
+
+    if(!this.validaCampos()){
+      return;
+    }
+
+    this.servicoService.create(this.servico).subscribe(response => {
+      this.toast.success('Serviços cadastrado com sucesso', 'Cadastro')
+      this.router.navigate(['servicos'])
+    }, ex => {
+      if (ex.error.error) {
+        this.toast.error(ex.error.message);
+      }
+    })
+
+  }
+
+  validaCampos(): boolean {
+    return this.desc.valid && this.vlr.valid;
   }
 
 }

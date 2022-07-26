@@ -1,6 +1,5 @@
 export interface Servico{
-  id: string;
+  id: any;
   descricao: string;
-  valor: string;
-  chamadoId: string
+  valor: string
 }

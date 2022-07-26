@@ -1,1 +1,30 @@
-<p>servico-create works!</p>
+<div class="container mat-elevation-z8">
+  <form #formDir="ngForm">
+    <h1 class="fullWidth">Cadastrar Serviços</h1>
+
+    <mat-form-field class="fullWidth" appearance="legacy">
+      <mat-label>Descrição</mat-label>
+      <input
+      [(ngModel)]="servico.descricao"
+      name="descricao"
+      maxlength="50"
+      [formControl]="desc"
+      required matInput
+      placeholder="Placeholder">
+      <mat-icon matSuffix>build</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth" appearance="legacy">
+      <mat-label>Valor {{servico.valor | currency}}</mat-label>
+      <input [(ngModel)]="servico.valor"
+      type="number"
+      name="valor" [formControl]="vlr"
+      required
+      matInput
+      placeholder="Informe o valor do serviço">
+      <mat-icon matSuffix>pin</mat-icon>
+    </mat-form-field>
+
+    <button (click)="create()" class="fullWidth" mat-flat-button color="primary">Cadastrar</button>
+  </form>
+</div>
