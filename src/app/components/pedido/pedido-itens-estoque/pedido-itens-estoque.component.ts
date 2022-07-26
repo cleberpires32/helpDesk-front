@@ -80,8 +80,7 @@ export class PedidoItensEstoqueComponent implements OnInit {
     else {
       this.chamadoService.update(this.chamado).subscribe((response) => {
         this.toastrService.success('Pedidos de Estoque vinculado com sucesso', 'Adiciona Itens')
-       // this.route.navigate(['pedidosChamado'])
-      this.reloadCurrentRoute();
+        this.reloadCurrentRoute();
       }, ex => {
         this.toastrService.error(ex.error.error);
       })
@@ -90,8 +89,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
   }
   reloadCurrentRoute() {
     let currentUrl = this.route.url;
-    this.route.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-        this.route.navigate([currentUrl]);
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.route.navigate([currentUrl]);
     });
   }
 
@@ -106,7 +105,7 @@ export class PedidoItensEstoqueComponent implements OnInit {
   findByIdChamado(): void {
     this.chamadoService.findById(this.chamado.id).subscribe(response => {
       this.chamado = response;
-     }, ex => { this.toastrService.warning('Chamado não encontrado') })
+    }, ex => { this.toastrService.warning('Chamado não encontrado') })
   }
 
   applyFilter(event: Event) {
