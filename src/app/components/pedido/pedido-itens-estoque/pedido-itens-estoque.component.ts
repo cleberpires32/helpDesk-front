@@ -73,7 +73,6 @@ export class PedidoItensEstoqueComponent implements OnInit {
   }
 
   update(): void {
-console.log("entrada de valor ",this.itens.quantidadeSolicitada);
 
     if (this.chamado.itensEstoque.length === 0) {
       this.toastrService.warning("Valores obrigatórios como checkBox ou quantidade solicitada")
@@ -81,12 +80,19 @@ console.log("entrada de valor ",this.itens.quantidadeSolicitada);
     else {
       this.chamadoService.update(this.chamado).subscribe((response) => {
         this.toastrService.success('Pedidos de Estoque vinculado com sucesso', 'Adiciona Itens')
-        this.route.navigate(['chamados'])
+       // this.route.navigate(['pedidosChamado'])
+      this.reloadCurrentRoute();
       }, ex => {
         this.toastrService.error(ex.error.error);
       })
     }
 
+  }
+  reloadCurrentRoute() {
+    let currentUrl = this.route.url;
+    this.route.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.route.navigate([currentUrl]);
+    });
   }
 
   findAllItensEstoque() {
