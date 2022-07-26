@@ -50,6 +50,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { PedidoItensEstoqueUpdateComponent } from './components/pedido/pedido-itens-estoque-update/pedido-itens-estoque-update.component';
 import { PedidoItensEstoqueDeleteComponent } from './components/pedido/pedido-itens-estoque-delete/pedido-itens-estoque-delete.component';
 import { OrcamentoReadComponent } from './components/pdf/orcamento/orcamento-read/orcamento-read.component';
+import { ServicoCreateComponent } from './components/servico/servico-create/servico-create.component';
 
 registerLocaleData(ptBr);
 
@@ -78,7 +79,8 @@ registerLocaleData(ptBr);
     ItensEstoqueUpdateComponent,
     PedidoItensEstoqueUpdateComponent,
     PedidoItensEstoqueDeleteComponent,
-    OrcamentoReadComponent
+    OrcamentoReadComponent,
+    ServicoCreateComponent
   ],
   imports: [
     BrowserModule,
