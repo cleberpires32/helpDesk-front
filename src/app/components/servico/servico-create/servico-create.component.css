@@ -6,7 +6,7 @@
 }
 .container{
   width: 25rem;
-  margin: auto;
+  margin: auto auto .4rem auto;;
   padding: 1rem ;
 }
 

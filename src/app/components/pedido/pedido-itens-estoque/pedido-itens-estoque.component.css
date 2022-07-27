@@ -62,3 +62,8 @@ a {
       justify-content: center;
       width: 120px;
   }
+
+  mat-expansion-panel{
+    margin: .8rem 0 .8rem 0;
+    background-color: azure;
+  }
