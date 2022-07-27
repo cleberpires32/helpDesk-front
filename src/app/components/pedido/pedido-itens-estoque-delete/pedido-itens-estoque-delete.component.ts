@@ -34,7 +34,8 @@ export class PedidoItensEstoqueDeleteComponent implements OnInit {
     nomeCliente: '',
     tecnico: '',
     nomeTecnico: '',
-    itensEstoque: []
+    itensEstoque: [],
+    servicos:[]
   };
 
   constructor(fb: FormBuilder,

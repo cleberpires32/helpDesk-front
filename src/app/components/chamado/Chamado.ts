@@ -1,3 +1,4 @@
+import { Servico } from './../servico/Servico';
 import { PedidoEstoque } from './../pedido/PedidoEstoque';
 import { ItensEstoque } from './../itens/ItensEstoque';
 export interface Chamado
@@ -13,5 +14,6 @@ export interface Chamado
   nomeCliente: string;
   tecnico: any;
   nomeTecnico: string;
-  itensEstoque: ItensEstoque[]
+  itensEstoque: ItensEstoque[],
+  servicos: Servico[]
 }

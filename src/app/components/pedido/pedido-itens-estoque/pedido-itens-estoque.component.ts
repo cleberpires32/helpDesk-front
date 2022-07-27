@@ -53,7 +53,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
     nomeCliente: '',
     tecnico: '',
     nomeTecnico: '',
-    itensEstoque: []
+    itensEstoque: [],
+    servicos: []
   };
 
   itens: ItensEstoque = {
