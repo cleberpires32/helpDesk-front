@@ -51,6 +51,7 @@ import { PedidoItensEstoqueUpdateComponent } from './components/pedido/pedido-it
 import { PedidoItensEstoqueDeleteComponent } from './components/pedido/pedido-itens-estoque-delete/pedido-itens-estoque-delete.component';
 import { OrcamentoReadComponent } from './components/pdf/orcamento/orcamento-read/orcamento-read.component';
 import { ServicoCreateComponent } from './components/servico/servico-create/servico-create.component';
+import { ServicoListComponent } from './components/servico/servico-list/servico-list.component';
 
 registerLocaleData(ptBr);
 
@@ -80,7 +81,8 @@ registerLocaleData(ptBr);
     PedidoItensEstoqueUpdateComponent,
     PedidoItensEstoqueDeleteComponent,
     OrcamentoReadComponent,
-    ServicoCreateComponent
+    ServicoCreateComponent,
+    ServicoListComponent
   ],
   imports: [
     BrowserModule,

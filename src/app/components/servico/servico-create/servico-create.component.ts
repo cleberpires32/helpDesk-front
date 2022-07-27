@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ServicoService } from './../../../services/servico.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Servico } from '../servico';
+import { Servico } from '../Servico';
 
 @Component({
   selector: 'app-servico-create',
@@ -38,7 +38,8 @@ export class ServicoCreateComponent implements OnInit {
 
     this.servicoService.create(this.servico).subscribe(response => {
       this.toast.success('Serviços cadastrado com sucesso', 'Cadastro')
-      this.router.navigate(['servicos'])
+      //this.router.navigate(['servicos'])
+      this.reloadCurrentRoute();
     }, ex => {
       if (ex.error.error) {
         this.toast.error(ex.error.message);
@@ -49,6 +50,13 @@ export class ServicoCreateComponent implements OnInit {
 
   validaCampos(): boolean {
     return this.desc.valid && this.vlr.valid;
+  }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 
 }
