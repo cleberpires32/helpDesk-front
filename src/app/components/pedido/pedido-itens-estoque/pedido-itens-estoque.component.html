@@ -29,12 +29,26 @@
   </mat-accordion>
 
   <mat-accordion class="mat-elevation-z4">
+    <mat-expansion-panel>
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p matBadge="{{chamado.servicos.length}}" matBadgeOverlap="false">Lista dos serviços para o chamado</p>>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-servico-list-chamado></app-servico-list-chamado>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion class="mat-elevation-z4" [hidden]="chamado.servicos.length === 0">
 
     <mat-expansion-panel>
 
       <mat-expansion-panel-header>
         <mat-panel-title>
-         <p matBadge="{{chamado.itensEstoque.length}}" matBadgeOverlap="false"> Lista itens de estoque </p>
+          <p matBadge="{{chamado.itensEstoque.length}}" matBadgeOverlap="false"> Lista itens de estoque </p>
         </mat-panel-title>
       </mat-expansion-panel-header>
 
@@ -100,17 +114,6 @@
 
     </mat-expansion-panel>
   </mat-accordion>
-  <mat-accordion class="mat-elevation-z4">
 
-    <mat-expansion-panel>
-
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <p matBadge="{{chamado.servicos.length}}" matBadgeOverlap="false">Lista dos serviços para o chamado</p>>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <app-servico-list></app-servico-list>
-    </mat-expansion-panel>
-  </mat-accordion>
 
 </div>

@@ -1,26 +1,24 @@
+import { SelectionModel } from '@angular/cdk/collections';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ChamadoService } from 'src/app/services/chamado.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { ServicoService } from './../../../services/servico.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { Servico } from '../Servico';
-import { MatPaginator } from '@angular/material/paginator';
-import { SelectionModel } from '@angular/cdk/collections';
+import { ServicoService } from 'src/app/services/servico.service';
 import { Chamado } from '../../chamado/Chamado';
+import { Servico } from '../Servico';
 
 @Component({
-  selector: 'app-servico-list',
-  templateUrl: './servico-list.component.html',
-  styleUrls: ['./servico-list.component.css']
+  selector: 'app-servico-list-chamado',
+  templateUrl: './servico-list-chamado.component.html',
+  styleUrls: ['./servico-list-chamado.component.css']
 })
-export class ServicoListComponent implements OnInit {
+export class ServicoListChamadoComponent implements OnInit {
 
   ELEMENT_DATA: Servico[] = [];
   dataSource = new MatTableDataSource<Servico>(this.ELEMENT_DATA);
-  displayedColumns: string[] = [ 'id', 'descricao', 'valor'];
+  displayedColumns: string[] = ['select', 'id', 'descricao', 'valor'];
   selection = new SelectionModel<Servico>(true, []);
   chamadoId: any;
   chamado: Chamado = {
