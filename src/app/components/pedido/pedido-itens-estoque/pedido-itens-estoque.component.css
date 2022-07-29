@@ -65,5 +65,5 @@ a {
 
   mat-expansion-panel{
     margin: .8rem 0 .8rem 0;
-    background-color: azure;
+   /*background-color: azure;*/
   }

@@ -68,6 +68,7 @@ export class ServicoListChamadoComponent implements OnInit {
       });
       this.chamadoService.update(this.chamado).subscribe(response =>{
         this.toast.success('Servicos inclusos com sucesso','Cadastro')
+        this.reloadCurrentRoute();
       }, ex =>{
         this.toast.error(ex.error.error);
       });
@@ -108,4 +109,12 @@ export class ServicoListChamadoComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.route.url;
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.route.navigate([currentUrl]);
+    });
+  }
+
 }
