@@ -9,6 +9,7 @@ export interface Chamado
   status: string;
   prioridade: any;
   titulo: string;
+  modelo: string;
   observacoes: string;
   cliente: any;
   nomeCliente: string;

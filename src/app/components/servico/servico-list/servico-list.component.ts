@@ -30,6 +30,7 @@ export class ServicoListComponent implements OnInit {
     status: '',
     prioridade: '',
     titulo: '',
+    modelo: '',
     observacoes: '',
     cliente: '',
     nomeCliente: '',
