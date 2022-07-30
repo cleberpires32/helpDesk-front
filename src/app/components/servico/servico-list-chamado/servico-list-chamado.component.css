@@ -20,4 +20,17 @@ h1 {
   color: rgb(43, 152, 160);
 }
 
+ul.a {
+  list-style-type: circle;
+  background-color: rgb(222, 237, 238);
+}
+
+.button-remover {
+  width: 20%;
+}
+
+.trFinal{
+  padding: .1rem;
+  background-color:rgb(43, 152, 160);
+}
 

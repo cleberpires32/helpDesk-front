@@ -21,6 +21,8 @@ export class ServicoListChamadoComponent implements OnInit {
   displayedColumns: string[] = ['select', 'id', 'descricao', 'valor'];
   selection = new SelectionModel<Servico>(true, []);
   chamadoId: any;
+  servicosSelection: Servico[]=[]
+
   chamado: Chamado = {
     id: '',
     dataAbertura: '',
@@ -81,8 +83,6 @@ export class ServicoListChamadoComponent implements OnInit {
   findByIdChamado() {
     this.chamadoService.findById(this.chamadoId).subscribe(response => {
       this.chamado = response
-      console.log('chamado/serviços ',this.chamado);
-
     })
   }
 
