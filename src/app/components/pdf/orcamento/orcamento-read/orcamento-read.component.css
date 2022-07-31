@@ -1,17 +1,20 @@
 .container {
-  width: 100%;
+  width: 80%;
   margin: auto;
+  font-size: 70%;
 }
 
 .table {
   width: 85%;
   margin-left: 50px;
   margin-bottom: 1rem;
+  font-size: 70%;
+  font-family: 'Franklin Gothic Medium', 'Times New Roman', Arial, sans-serif;
 }
 
 .header{
   text-align: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Times New Roman', Arial, sans-serif;
   color: rgb(56, 55, 55);
   line-height: 0.3;
   padding-top: 30px;
@@ -19,16 +22,11 @@
 
 .subHeader{
   text-align: left;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Times New Roman', Arial, sans-serif;
   color: rgb(56, 55, 55);
   padding-left: 49px;
   padding-top: 27px;
   padding-bottom: 16px;
-}
-
-.container {
-  width: 90%;
-  margin: auto;
 }
 
 h1 {
@@ -36,3 +34,11 @@ h1 {
   text-align: center;
 }
 
+tr.mat-header-row {
+  height: 20px;
+  background-color: rgb(245, 240, 240);
+}
+
+tr.mat-row, tr.mat-footer-row {
+  height: 30px;
+}
