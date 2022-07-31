@@ -49,6 +49,7 @@ export class PedidoItensEstoqueComponent implements OnInit {
     prioridade: '',
     titulo: '',
     modelo:'',
+    recibo:'',
     observacoes: '',
     telefoneCliente: '',
     cliente: '',

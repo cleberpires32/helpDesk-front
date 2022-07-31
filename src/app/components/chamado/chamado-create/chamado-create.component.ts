@@ -39,6 +39,7 @@ export class ChamadoCreateComponent implements OnInit {
     prioridade: '',
     titulo: '',
     modelo:'',
+    recibo:'',
     observacoes: '',
     telefoneCliente: '',
     cliente: '',

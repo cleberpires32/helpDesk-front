@@ -30,6 +30,7 @@ export class PedidoItensEstoqueDeleteComponent implements OnInit {
     prioridade: '',
     titulo: '',
     modelo:'',
+    recibo:'',
     observacoes: '',
     telefoneCliente: '',
     cliente: '',

@@ -43,6 +43,7 @@ export class OrcamentoReadComponent implements OnInit {
     prioridade: '',
     titulo: '',
     modelo:'',
+    recibo:'',
     observacoes: '',
     telefoneCliente: '',
     cliente: '',

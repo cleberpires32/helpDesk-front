@@ -10,6 +10,7 @@ export interface Chamado
   prioridade: any;
   titulo: string;
   modelo: string;
+  recibo: string;
   observacoes: string;
   telefoneCliente: string;
   cliente: any;
