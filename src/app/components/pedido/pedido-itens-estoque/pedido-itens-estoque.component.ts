@@ -50,6 +50,7 @@ export class PedidoItensEstoqueComponent implements OnInit {
     titulo: '',
     modelo:'',
     observacoes: '',
+    telefoneCliente: '',
     cliente: '',
     nomeCliente: '',
     tecnico: '',

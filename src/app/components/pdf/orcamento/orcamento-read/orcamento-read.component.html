@@ -10,35 +10,35 @@
       <h3>RECIBO 539</h3>
     </div>
     <div class="subHeader">
-      DATA: {{ chamado.dataAbertura }}<br />
+      DATA: {{ chamado.dataAbertura | date:'dd/MM/yyyy' }}<br />
       CLIENTE: {{chamado.nomeCliente}}<br />
-      TELEFONE: {{chamado.cliente.telefone}}<br />
-      MAQUINA: {{ chamado.titulo }} MODELO: PS 1232<br />
+      TELEFONE: {{chamado.telefoneCliente | mask: '(00) 000-0000'}}<br />
+      MAQUINA: {{ chamado.titulo }} MODELO: {{ chamado.modelo }}<br />
     </div>
     <div>
       <table mat-table [dataSource]="dataSource" class="table">
 
         <ng-container matColumnDef="descricao">
-          <th mat-header-cell *matHeaderCellDef> DESCRIÇÃO DOS SERVIÇOS </th>
+          <th mat-header-cell *matHeaderCellDef> DESCRIÇÃO DOS ITENS </th>
           <td mat-cell *matCellDef="let transaction"> {{transaction.descricao}} </td>
-          <td mat-footer-cell *matFooterCellDef> Total </td>
+          <td mat-footer-cell *matFooterCellDef> TOTAL DOS ITENS </td>
         </ng-container>
 
         <ng-container matColumnDef="quantidade">
-          <th mat-header-cell *matHeaderCellDef> Quantidade </th>
-          <td mat-cell *matCellDef="let transaction"> {{transaction.quantidade}} </td>
+          <th mat-header-cell *matHeaderCellDef> QUANTIDADE </th>
+          <td mat-cell *matCellDef="let transaction"> {{transaction.quantidadeSolicitada}} </td>
           <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
 
         <ng-container matColumnDef="valor">
-          <th mat-header-cell *matHeaderCellDef> Valor </th>
+          <th mat-header-cell *matHeaderCellDef> VALOR </th>
           <td mat-cell *matCellDef="let transaction"> {{transaction.valor | currency}} </td>
           <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
 
         <ng-container matColumnDef="valor_total">
-          <th mat-header-cell *matHeaderCellDef> Valor Total </th>
-          <td mat-cell *matCellDef="let transaction"> {{transaction.valor * transaction.quantidade | currency}} </td>
+          <th mat-header-cell *matHeaderCellDef> TOTAL </th>
+          <td mat-cell *matCellDef="let transaction"> {{transaction.valor * transaction.quantidadeSolicitada | currency}} </td>
           <td mat-footer-cell *matFooterCellDef> {{getValorTotalItens() | currency}} </td>
         </ng-container>
 
@@ -55,12 +55,12 @@
         <ng-container matColumnDef="descricao">
           <th mat-header-cell *matHeaderCellDef><strong> DESCRIÇÃO DOS SERVIÇOS </strong></th>
           <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
-          <td mat-footer-cell *matFooterCellDef> Total </td>
+          <td mat-footer-cell *matFooterCellDef> TOTAL DOS SERVIÇOS </td>
         </ng-container>
 
 
         <ng-container matColumnDef="valor">
-          <th mat-header-cell *matHeaderCellDef> Valor</th>
+          <th mat-header-cell *matHeaderCellDef> VALOR</th>
           <td mat-cell *matCellDef="let element"> {{element.valor | currency}} </td>
           <td mat-footer-cell *matFooterCellDef> {{getValorTotalServicos() | currency }} </td>
         </ng-container>
@@ -71,5 +71,44 @@
       </table>
     </div>
 
+    <div>
+      <table class="table" mat-table [dataSource]="dataSourceServico">
+        <ng-container matColumnDef="descricao">
+          <td mat-footer-cell *matFooterCellDef><strong> TOTAL DE SERVIÇOS E PEÇAS </strong> </td>
+        </ng-container>
+        <ng-container matColumnDef="valor">
+          <td mat-footer-cell *matFooterCellDef><strong> {{getValorTotalServicos() + getValorTotalItens() | currency }}
+            </strong></td>
+        </ng-container>
+        <tr mat-footer-row *matFooterRowDef="displayedColumnsServico"></tr>
+      </table>
+    </div>
+
+    <hr size="1" />
+    <table>
+      <tr>
+        <!--
+        <td style="font-family:tahoma,arial,verdana; font-size:11px; text-align:center" valign="top">
+           <a href="https://www.SEUSITE.com.br" target="_blank"><img src="https://goo.gl/Y7AqYY" border="0" /></a>
+        </td>
+        -->
+        <td style="font-family:tahoma,arial,verdana; font-size:12px; padding-left:10px">
+          <br />
+          <br />
+          <mat-icon matSuffix>build</mat-icon>
+          Assinatura:
+          <hr style="width: 20rem;" />
+          <strong>LEMES ROÇADEIRAS E MOTOSSERRAS</strong>
+          <br />
+          <strong>Fone:</strong> (61) 9-9632-7867
+          <br />
+          <br />
+        </td>
+      </tr>
+    </table>
+
   </div>
+  <form>
+    <input type="button" value="Print this page" onClick="window.print()" />
+  </form>
 </div>

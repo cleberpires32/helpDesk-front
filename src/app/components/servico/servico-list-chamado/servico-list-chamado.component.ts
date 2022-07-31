@@ -32,6 +32,7 @@ export class ServicoListChamadoComponent implements OnInit {
     titulo: '',
     modelo:'',
     observacoes: '',
+    telefoneCliente: '',
     cliente: '',
     nomeCliente: '',
     tecnico: '',

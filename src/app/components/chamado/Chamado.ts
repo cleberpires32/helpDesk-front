@@ -11,6 +11,7 @@ export interface Chamado
   titulo: string;
   modelo: string;
   observacoes: string;
+  telefoneCliente: string;
   cliente: any;
   nomeCliente: string;
   tecnico: any;

@@ -44,6 +44,7 @@ export class OrcamentoReadComponent implements OnInit {
     titulo: '',
     modelo:'',
     observacoes: '',
+    telefoneCliente: '',
     cliente: '',
     nomeCliente: '',
     tecnico: '',
@@ -74,7 +75,7 @@ export class OrcamentoReadComponent implements OnInit {
   getValorTotalItens() {
     if (this.ELEMENT_DATA.length > 0) {
       return this.ELEMENT_DATA.map(t =>
-        Number(t.valor) * Number(t.quantidade)).reduce((t, valor) => t + valor)
+        Number(t.valor) * Number(t.quantidadeSolicitada)).reduce((t, valor) => t + valor)
     }
     return 0;
   }
