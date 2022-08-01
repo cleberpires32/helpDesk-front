@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container" id="paginaRecibo">
 
   <div class="mat-elevation-z8">
 
     <div class="header">
       <h1>LEMES ROÇADEIRAS E MOTOSERRAS</h1>
       <h2>MANUTENÇÃO E VENDAS DE PEÇAS E ACESSÓRIOS</h2>
-      <h3>CNHPJ: 38.656.210/0001-05</h3>
+      <h3>CNPJ: 38.656.210/0001-05</h3>
       <h3>TELEFONE: (61) 9-9632-7867</h3>
-      <h3>RECIBO {{chamado.recibo}}</h3>
+      <h3 style="margin-left: 49rem;">RECIBO {{chamado.recibo}}</h3>
     </div>
     <div class="subHeader">
       <h3>
@@ -112,6 +112,6 @@
 
   </div>
   <form>
-
   </form>
+  <button  mat-button (click)="printComponent()">Imprimir orçamento</button>
 </div>

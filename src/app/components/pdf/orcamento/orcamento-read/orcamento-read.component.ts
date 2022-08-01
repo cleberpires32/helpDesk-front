@@ -87,4 +87,15 @@ export class OrcamentoReadComponent implements OnInit {
     }
     return 0;
   }
+
+  printComponent() {
+    const printContent = document.getElementById("paginaRecibo");
+    const WindowPrt = window.open('', '', 'left=0,top=50,width=900,height=900,toolbar=0,scrollbars=0,status=0')!;
+    WindowPrt.document.write(printContent!.innerHTML);
+    WindowPrt.document.write('<link rel="stylesheet" type="text/css" href="./../orcamento-read.component.css">')
+    WindowPrt.document.close();
+    WindowPrt.focus();
+    WindowPrt.print();
+    WindowPrt.close();
+  }
 }
