@@ -1,13 +1,18 @@
-<div class="container" id="paginaRecibo">
+<div class="container">
+  <button class="mat-elevation-z8"
+  style="position: relative; top: 37px;"
+  mat-flat-button (click)="printComponent()">
+    <mat-icon matSuffix>print</mat-icon>
+  </button>
 
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" id="paginaRecibo">
 
     <div class="header">
       <h1>LEMES ROÇADEIRAS E MOTOSERRAS</h1>
       <h2>MANUTENÇÃO E VENDAS DE PEÇAS E ACESSÓRIOS</h2>
       <h3>CNPJ: 38.656.210/0001-05</h3>
       <h3>TELEFONE: (61) 9-9632-7867</h3>
-      <h3 style="margin-left: 49rem;">RECIBO {{chamado.recibo}}</h3>
+      <h3 style="text-align: left; margin-left: 3rem;">RECIBO {{chamado.recibo}}</h3>
     </div>
     <div class="subHeader">
       <h3>
@@ -88,7 +93,7 @@
     </div>
 
     <hr size="1" />
-    <table>
+    <table class="tebelaFooter">
       <tr>
         <!--
         <td style="font-family:tahoma,arial,verdana; font-size:11px; text-align:center" valign="top">
@@ -100,7 +105,7 @@
           <br />
           <mat-icon matSuffix>build</mat-icon>
           Assinatura:
-          <hr style="width: 20rem;" />
+          <hr style="width: 50%;margin-left: 0%;" />
           <strong>LEMES ROÇADEIRAS E MOTOSSERRAS</strong>
           <br />
           <strong>Fone:</strong> (61) 9-9632-7867
@@ -113,5 +118,4 @@
   </div>
   <form>
   </form>
-  <button  mat-button (click)="printComponent()">Imprimir orçamento</button>
 </div>

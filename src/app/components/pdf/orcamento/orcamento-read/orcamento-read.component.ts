@@ -42,8 +42,8 @@ export class OrcamentoReadComponent implements OnInit {
     status: '',
     prioridade: '',
     titulo: '',
-    modelo:'',
-    recibo:'',
+    modelo: '',
+    recibo: '',
     observacoes: '',
     telefoneCliente: '',
     cliente: '',
@@ -92,7 +92,16 @@ export class OrcamentoReadComponent implements OnInit {
     const printContent = document.getElementById("paginaRecibo");
     const WindowPrt = window.open('', '', 'left=0,top=50,width=900,height=900,toolbar=0,scrollbars=0,status=0')!;
     WindowPrt.document.write(printContent!.innerHTML);
-    WindowPrt.document.write('<link rel="stylesheet" type="text/css" href="./../orcamento-read.component.css">')
+    WindowPrt.document.write('<style>\n\
+    .container{ width: 80%; margin:auto; font-size: 70%;  }\n\
+    table {text-align: left; width: 85%; margin-left: 50px; margin-bottom: 1rem; font-size: 70%; font-family: Franklin Gothic Medium, Times New Roman, Arial, sans-serif; margin-bottom: 2.5rem; }\n\
+    .header{text-align: center; font-family: Franklin Gothic Medium , Times New Roman, Arial, sans-serif; color: rgb(56, 55, 55); line-height: 0.3; padding-top: 30px; }\n\
+    .subHeader{text-align: left; font-family: Franklin Gothic Medium, Times New Roman, Arial, sans-serif; color: rgb(56, 55, 55); padding-left: 49px; padding-top: 27px; padding-bottom: 16px;}\n\
+     h1 {width: 100%; text-align: center;}\n\
+     tr.mat-header-row {height: 20px; background-color: rgb(245, 240, 240);}\n\
+     tr.mat-row, tr.mat-footer-row {height: 30px;}\n\
+     .tebelaFooter{text-align: left}\n\
+    </style> ')
     WindowPrt.document.close();
     WindowPrt.focus();
     WindowPrt.print();
