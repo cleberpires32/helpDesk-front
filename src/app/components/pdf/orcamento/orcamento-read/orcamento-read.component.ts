@@ -88,6 +88,14 @@ export class OrcamentoReadComponent implements OnInit {
     return 0;
   }
 
+  getNotExisteValor(): boolean {
+    if (this.ELEMENT_DATA_SERVICO.length === 0 &&
+      this.ELEMENT_DATA.length === 0) {
+      return true;
+    } else
+      return false;
+  }
+
   printComponent() {
     const printContent = document.getElementById("paginaRecibo");
     const WindowPrt = window.open('', '', 'left=0,top=50,width=900,height=900,toolbar=0,scrollbars=0,status=0')!;

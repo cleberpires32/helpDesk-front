@@ -1,7 +1,5 @@
 <div class="container">
-  <button class="mat-elevation-z8"
-  style="position: relative; top: 37px;"
-  mat-flat-button (click)="printComponent()">
+  <button class="mat-elevation-z8" style="position: relative; top: 37px;" mat-flat-button (click)="printComponent()">
     <mat-icon matSuffix>print</mat-icon>
   </button>
 
@@ -21,8 +19,10 @@
         TELEFONE: {{chamado.telefoneCliente | mask: '(00) 000-0000'}}<br />
         MAQUINA: {{ chamado.titulo }} MODELO: {{ chamado.modelo }}<br />
       </h3>
+      <br/><br/><br/>
+      <h3 [hidden]="!getNotExisteValor()">Observações: {{ chamado.observacoes }}</h3>
     </div>
-    <div>
+    <div [hidden]="getNotExisteValor()">
       <table mat-table [dataSource]="dataSource" class="table">
 
         <ng-container matColumnDef="descricao">
@@ -55,9 +55,7 @@
         <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 
       </table>
-    </div>
 
-    <div>
       <table class="table" mat-table [dataSource]="dataSourceServico">
 
         <ng-container matColumnDef="descricao">
@@ -77,9 +75,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumnsServico"></tr>
         <tr mat-footer-row *matFooterRowDef="displayedColumnsServico"></tr>
       </table>
-    </div>
 
-    <div>
       <table class="table" mat-table [dataSource]="dataSourceServico">
         <ng-container matColumnDef="descricao">
           <td mat-footer-cell *matFooterCellDef><strong> TOTAL DE SERVIÇOS E PEÇAS </strong> </td>
