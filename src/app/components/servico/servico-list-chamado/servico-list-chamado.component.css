@@ -9,6 +9,7 @@ table {
 
 button {
   width: 100%;
+  margin-top: .5rem;
 }
 
 h1 {
@@ -23,10 +24,6 @@ h1 {
 ul.a {
   list-style-type: circle;
   background-color: rgb(222, 237, 238);
-}
-
-.button-remover {
-  width: 20%;
 }
 
 .trFinal{

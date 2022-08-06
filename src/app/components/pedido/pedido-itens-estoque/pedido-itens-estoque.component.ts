@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatListOption } from '@angular/material/list';
-import { isEmpty } from 'rxjs';
+import { isEmpty, min } from 'rxjs';
 
 @Component({
   selector: 'app-pedido-itens-estoque',
@@ -40,7 +40,9 @@ export class PedidoItensEstoqueComponent implements OnInit {
   dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
 
   qt_solicitada: FormControl = new FormControl(null, Validators.required);
-  vinculoChamado: FormControl = new FormControl(null, Validators.required)
+  quantidade: FormControl = new FormControl(null, Validators.required);
+  vinculoChamado: FormControl = new FormControl(null, Validators.required);
+
   chamado: Chamado = {
     id: '',
     dataAbertura: '',
@@ -48,8 +50,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
     status: '',
     prioridade: '',
     titulo: '',
-    modelo:'',
-    recibo:'',
+    modelo: '',
+    recibo: '',
     observacoes: '',
     telefoneCliente: '',
     cliente: '',
@@ -74,19 +76,23 @@ export class PedidoItensEstoqueComponent implements OnInit {
     this.chamado.id = this.actvRouter.snapshot.paramMap.get('id');
     this.findByIdChamado();
     this.findAllItensEstoque();
+
   }
 
   update(): void {
-
+    this.regraDcampo();
     if (this.chamado.itensEstoque.length === 0) {
       this.toastrService.warning("Valores obrigatórios como checkBox ou quantidade solicitada")
+      return
     }
     else {
+
+      this.chamado.servicos = [];
       this.chamadoService.update(this.chamado).subscribe((response) => {
         this.toastrService.success('Pedidos de Estoque vinculado com sucesso', 'Adiciona Itens')
         this.reloadCurrentRoute();
       }, ex => {
-        this.toastrService.error(ex.error.error);
+        this.toastrService.error("Duplicação de dados.");
       })
     }
 
@@ -139,8 +145,15 @@ export class PedidoItensEstoqueComponent implements OnInit {
     this.dataSource = this.dataSource;
   }
 
-  validaCampos(): boolean {
+  validaFormGroup(): boolean {
+    return this.vinculoChamado.valid || this.qt_solicitada.valid
+  }
 
-    return this.vinculoChamado.valid && this.qt_solicitada.valid
+  regraDcampo(){
+    this.chamado.itensEstoque.forEach(f =>{
+      if(f.quantidadeSolicitada == null){
+        f.quantidadeSolicitada = '1';
+      }
+    })
   }
 }

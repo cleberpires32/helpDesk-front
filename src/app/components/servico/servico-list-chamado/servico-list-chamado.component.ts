@@ -21,7 +21,9 @@ export class ServicoListChamadoComponent implements OnInit {
   displayedColumns: string[] = ['select', 'id', 'descricao', 'valor'];
   selection = new SelectionModel<Servico>(true, []);
   chamadoId: any;
-  servicosSelection: Servico[]=[]
+  //servicosSelection: Servico[] = []
+
+  servicosChecked: Servico[] = [];
 
   chamado: Chamado = {
     id: '',
@@ -30,8 +32,8 @@ export class ServicoListChamadoComponent implements OnInit {
     status: '',
     prioridade: '',
     titulo: '',
-    modelo:'',
-    recibo:'',
+    modelo: '',
+    recibo: '',
     observacoes: '',
     telefoneCliente: '',
     cliente: '',
@@ -49,7 +51,8 @@ export class ServicoListChamadoComponent implements OnInit {
     private route: Router,
     private activeRoute: ActivatedRoute,
     private chamadoService: ChamadoService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -67,19 +70,33 @@ export class ServicoListChamadoComponent implements OnInit {
 
   createServicoChamado() {
 
-    if (this.selection.selected.length > 0) {
-        this.selection.selected.forEach(f => {
-          this.chamado.servicos.push(f);
-      });
-      this.chamadoService.update(this.chamado).subscribe(response =>{
-        this.toast.success('Servicos inclusos com sucesso','Cadastro')
-        this.reloadCurrentRoute();
-      }, ex =>{
-        this.toast.error(ex.error.error);
-      });
-      this.chamado.servicos = [];
-    }
+    this.getServicos();
 
+    this.chamadoService.update(this.chamado).subscribe(response => {
+      this.toast.success('Servicos inclusos com sucesso', 'Cadastro')
+      this.reloadCurrentRoute();
+    }, ex => {
+      this.toast.error("Duplicação de dados");
+    });
+  }
+
+  deleteServicoChamado(){
+    this.chamado.servicos = [];
+    this.chamado.servicos = this.servicosChecked;
+    this.chamadoService.updateServicosChamado(this.chamado).subscribe(response => {
+      this.toast.success('Serviços alterados com sucesso', 'Remover')
+      this.reloadCurrentRoute();
+    })
+  }
+
+  getServicos() {
+    if (this.selection.selected.length > 0) {
+      this.chamado.servicos = []
+      this.chamado.itensEstoque = [];
+      this.selection.selected.forEach(f => {
+        this.chamado.servicos.push(f);
+      });
+    }
   }
 
   findByIdChamado() {
@@ -120,4 +137,11 @@ export class ServicoListChamadoComponent implements OnInit {
     });
   }
 
+  onSelection(event: boolean, i: Servico) {
+    if (event) {
+      this.servicosChecked.push(i)
+    } else {
+      this.servicosChecked.splice(this.servicosChecked.indexOf(i, 1))
+    }
+  }
 }

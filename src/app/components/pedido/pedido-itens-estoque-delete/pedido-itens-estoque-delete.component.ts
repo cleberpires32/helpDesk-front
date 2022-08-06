@@ -64,7 +64,7 @@ export class PedidoItensEstoqueDeleteComponent implements OnInit {
   delete() {
     this.prenchePedido()
     this.pedEstoqueService.delete(this.pedidoEstoque.chamado_id,this.pedidoEstoque.itensEstoque_id).subscribe(response => {
-      this.route.navigate(['chamados'])
+      this.reloadCurrentRoute();
       this.toast.success('Itens de Estoques removido do chamado com sucesso', 'Removido')
     })
     this.pedidoEstoque.itensEstoque_id = []
@@ -102,4 +102,10 @@ export class PedidoItensEstoqueDeleteComponent implements OnInit {
     })
   }
 
+  reloadCurrentRoute() {
+    let currentUrl = this.route.url;
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.route.navigate([currentUrl]);
+    });
+  }
 }

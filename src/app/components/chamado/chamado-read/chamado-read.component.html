@@ -1,6 +1,17 @@
 <div class="container mat-elevation-z8">
   <h1>Visualização de Chamado</h1>
     <img class="full-width" src="./assets/img/chamado-create.svg">
+
+    <form class="form">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Recibo</mat-label>
+        <input
+        [disabled]="true"
+        [(ngModel)]="chamado.recibo" name="recibo"
+        matInput>
+      </mat-form-field>
+    </form>
+
     <form class="form">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Título</mat-label>

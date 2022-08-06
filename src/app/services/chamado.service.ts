@@ -9,6 +9,7 @@ import { Chamado } from '../components/chamado/Chamado';
 })
 export class ChamadoService {
 
+
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<Chamado[]>{
@@ -26,4 +27,9 @@ export class ChamadoService {
   update(chamado: Chamado): Observable<Chamado>{
     return this.http.put<Chamado>(`${API_CONFIG.baseUrl}/chamados/${chamado.id}`, chamado)
   }
+
+  updateServicosChamado(chamado: Chamado): Observable<Chamado> {
+    return this.http.put<Chamado>(`${API_CONFIG.baseUrl}/chamados/${chamado.id}/servicos`, chamado.servicos)
+  }
+
 }

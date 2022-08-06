@@ -22,6 +22,7 @@ export class ChamadoUpdateComponent implements OnInit {
   tec: FormControl = new FormControl(null, Validators.required);
   cli: FormControl = new FormControl(null, Validators.required);
   obs: FormControl = new FormControl(null, Validators.required);
+  rec: FormControl = new FormControl(null, Validators.required);
 
   constructor(
     private tecnicoService: TecnicoService,
@@ -71,7 +72,8 @@ export class ChamadoUpdateComponent implements OnInit {
   }
 
   validaCampos(): boolean {
-    if (this.tit.valid && this.pri.valid && this.sta.valid && this.tec.valid && this.cli.valid && this.obs.valid) {
+    if (this.tit.valid && this.pri.valid && this.sta.valid &&
+      this.tec.valid && this.cli.valid && this.obs.valid && this.rec.valid) {
       return true
     } else { return false }
   }
