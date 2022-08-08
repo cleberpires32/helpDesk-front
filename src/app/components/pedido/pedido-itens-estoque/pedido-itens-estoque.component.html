@@ -6,7 +6,7 @@
 
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Informações do chamado:
+          Informações da O.S.M:
         </mat-panel-title>
         <mat-panel-description>
           {{chamado.titulo}}
@@ -33,7 +33,7 @@
 
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <p matBadge="{{chamado.servicos.length}}" matBadgeOverlap="false">Lista dos serviços para o chamado</p>>
+          <p matBadge="{{chamado.servicos.length}}" matBadgeOverlap="false">Serviços da O.S.M</p>>
         </mat-panel-title>
       </mat-expansion-panel-header>
 
@@ -48,7 +48,7 @@
 
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <p matBadge="{{chamado.itensEstoque.length}}" matBadgeOverlap="false"> Lista itens de estoque </p>
+          <p matBadge="{{chamado.itensEstoque.length}}" matBadgeOverlap="false"> Itens de estoque </p>
         </mat-panel-title>
       </mat-expansion-panel-header>
 
@@ -112,7 +112,7 @@
         </mat-paginator>
       </div>
       <button (click)="update()" [disabled]="!validaFormGroup()" mat-raised-button class="full-width"
-        color="primary">Salvar</button>
+        color="primary">Vincular</button>
 
     </mat-expansion-panel>
   </mat-accordion>
