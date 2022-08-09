@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
     private toast: ToastrService,
     private router: Router) { }
 
+    isLoading = false;
+
   ngOnInit(): void {
   }
 
@@ -31,7 +33,16 @@ export class LoginComponent implements OnInit {
     return this.email.valid && this.senha.valid
   }
 
+  tologgetLoading = () =>{
+    this.isLoading = true;
+
+    setTimeout(()=>{
+      this.isLoading = false
+    }, 3000)
+  }
+
   logar() {
+    this.tologgetLoading();
     this.authService.authentication(this.creds).subscribe(response => {
       this.authService.sucessFullLogin(response.headers.get('Authorization')!.substring(7))
       this.router.navigate([''])
