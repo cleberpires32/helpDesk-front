@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
     setTimeout(()=>{
       this.isLoading = false
-    }, 3000)
+    }, 300000)
   }
 
   logar() {
