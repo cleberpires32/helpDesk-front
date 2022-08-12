@@ -31,7 +31,9 @@
           </mat-checkbox>
         </th>
         <td mat-cell *matCellDef="let row">
-          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          {{row.isRegistration}}
+          <mat-checkbox
+          (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
             [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
           </mat-checkbox>
         </td>
@@ -52,11 +54,16 @@
         <td mat-cell *matCellDef="let element"> {{element.valor | currency}} </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+      <tr hidden = {{isRegistration}} mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr hidden={{row.isRegistration}} mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
 
     </table>
-    <button (click)="createServicoChamado()" class="fullWidth" mat-flat-button color="primary">Adicionar</button>
+
+    <button
+    disabled = "{{countServicoAdicionado==0}}"
+    (click)="createServicoChamado()"
+    class="fullWidth"
+    mat-flat-button color="primary">Adicionar</button>
   </div>
 </div>
 <hr class="trFinal" />

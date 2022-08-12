@@ -48,7 +48,8 @@ export class ChamadoUpdateComponent implements OnInit {
     tecnico: '',
     nomeTecnico: '',
     itensEstoque: [],
-    servicos:[]
+    servicos:[],
+    adicionarIten: false
   };
 
   listaTecnicos: Tecnico[] = [];

@@ -51,7 +51,8 @@ export class OrcamentoReadComponent implements OnInit {
     tecnico: '',
     nomeTecnico: '',
     itensEstoque: [],
-    servicos: []
+    servicos: [],
+    adicionarIten: false
   };
 
   ngOnInit(): void {

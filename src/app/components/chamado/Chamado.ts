@@ -18,5 +18,6 @@ export interface Chamado
   tecnico: any;
   nomeTecnico: string;
   itensEstoque: ItensEstoque[],
-  servicos: Servico[]
+  servicos: Servico[],
+  adicionarIten: boolean;
 }

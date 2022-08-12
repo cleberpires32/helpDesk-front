@@ -47,7 +47,8 @@ export class ChamadoCreateComponent implements OnInit {
     tecnico: '',
     nomeTecnico: '',
     itensEstoque:[],
-    servicos:[]
+    servicos:[],
+    adicionarIten: false
   };
 
   listaTecnicos: Tecnico[] = [];

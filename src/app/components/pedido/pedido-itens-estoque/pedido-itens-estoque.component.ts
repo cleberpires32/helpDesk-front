@@ -59,7 +59,8 @@ export class PedidoItensEstoqueComponent implements OnInit {
     tecnico: '',
     nomeTecnico: '',
     itensEstoque: [],
-    servicos: []
+    servicos: [],
+    adicionarIten: false
   };
 
   itens: ItensEstoque = {
@@ -133,10 +134,12 @@ export class PedidoItensEstoqueComponent implements OnInit {
 
     this.dataSource.data.map(i => {
       if (!this.itens.vinculoComChamado && i === this.itens) {
+        this.chamado.adicionarIten = true;
         this.itens_selecionados.push(this.itens)
       }
       else
         if (this.itens.vinculoComChamado && i === this.itens) {
+          this.chamado.adicionarIten = false;
           this.itens_selecionados.splice(this.itens_selecionados.indexOf(itensPagina), 1)
           this.chamado.itensEstoque = []
         }

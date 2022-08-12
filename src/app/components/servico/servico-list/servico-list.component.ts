@@ -39,7 +39,8 @@ export class ServicoListComponent implements OnInit {
     tecnico: '',
     nomeTecnico: '',
     itensEstoque: [],
-    servicos: []
+    servicos: [],
+    adicionarIten: false
   };
 
 

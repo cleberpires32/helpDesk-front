@@ -15,7 +15,8 @@ export class ServicoCreateComponent implements OnInit {
   servico: Servico = {
     id: '',
     descricao: '',
-    valor: ''
+    valor: '',
+    isRegistration: false
   }
 
   desc: FormControl = new FormControl(null, Validators.required);

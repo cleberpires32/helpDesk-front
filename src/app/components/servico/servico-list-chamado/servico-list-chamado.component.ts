@@ -21,9 +21,8 @@ export class ServicoListChamadoComponent implements OnInit {
   displayedColumns: string[] = ['select', 'id', 'descricao', 'valor'];
   selection = new SelectionModel<Servico>(true, []);
   chamadoId: any;
-  //servicosSelection: Servico[] = []
-
   servicosChecked: Servico[] = [];
+  countServicoAdicionado = 0;
 
   chamado: Chamado = {
     id: '',
@@ -41,7 +40,8 @@ export class ServicoListChamadoComponent implements OnInit {
     tecnico: '',
     nomeTecnico: '',
     itensEstoque: [],
-    servicos: []
+    servicos: [],
+    adicionarIten: false
   };
 
 
@@ -65,6 +65,8 @@ export class ServicoListChamadoComponent implements OnInit {
     return this.service.findAll().subscribe(response => {
       this.ELEMENT_DATA = response;
       this.dataSource = new MatTableDataSource<Servico>(this.ELEMENT_DATA);
+      this.isRegistration();
+      this.countServicoAdicionado = this.ELEMENT_DATA.length;
     })
   }
 
@@ -80,7 +82,7 @@ export class ServicoListChamadoComponent implements OnInit {
     });
   }
 
-  deleteServicoChamado(){
+  deleteServicoChamado() {
     this.chamado.servicos = [];
     this.chamado.servicos = this.servicosChecked;
     this.chamadoService.updateServicosChamado(this.chamado).subscribe(response => {
@@ -102,6 +104,7 @@ export class ServicoListChamadoComponent implements OnInit {
   findByIdChamado() {
     this.chamadoService.findById(this.chamadoId).subscribe(response => {
       this.chamado = response
+      this.isRegistration();
     })
   }
 
@@ -144,4 +147,16 @@ export class ServicoListChamadoComponent implements OnInit {
       this.servicosChecked.splice(this.servicosChecked.indexOf(i, 1))
     }
   }
+
+  isRegistration() {
+    this.ELEMENT_DATA.forEach(y => {
+      this.chamado.servicos.find(e => {
+        if (e.id == y.id) {
+          y.isRegistration = true;
+          this.countServicoAdicionado = this.countServicoAdicionado - 1;
+        }
+      })
+    })
+  }
+
 }

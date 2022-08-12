@@ -32,7 +32,8 @@ export class ChamadoReadComponent implements OnInit {
     tecnico: '',
     nomeTecnico: '',
     itensEstoque:[],
-    servicos:[]
+    servicos:[],
+    adicionarIten: false
   };
 
   ngOnInit(): void {
