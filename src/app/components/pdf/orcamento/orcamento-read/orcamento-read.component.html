@@ -11,8 +11,7 @@
       <h3>CNPJ: 38.656.210/0001-05</h3>
       <h3>TELEFONE: (61) 9-9632-7867</h3>
       <h3>PRÓXIMO AO ULTRABOX 24HS DO ARAPOANGA - PLANALTINA/DF</h3>
-      <h3 style="text-align: left; margin-left: 3rem;" [hidden]="!getNotExisteValor()">RECIBO {{chamado.recibo}}</h3>
-      <h3 style="text-align: left; margin-left: 3rem;" [hidden]="getNotExisteValor()">ORÇAMENTO {{chamado.recibo}}</h3>
+      <h3 style="text-align: left; margin-left: 3rem;">{{getNotExisteValor() ? 'RECIBO' : 'ORÇAMENTO'}} {{chamado.recibo}}</h3>
     </div>
     <div class="subHeader">
       <h3>
