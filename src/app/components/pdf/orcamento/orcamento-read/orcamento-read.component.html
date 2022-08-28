@@ -10,44 +10,73 @@
       <h2>MANUTENÇÃO E VENDAS DE PEÇAS E ACESSÓRIOS</h2>
       <h3>CNPJ: 38.656.210/0001-05</h3>
       <h3>TELEFONE: (61) 9-9632-7867</h3>
-      <h3 style="text-align: left; margin-left: 3rem;">RECIBO {{chamado.recibo}}</h3>
+      <h3>PRÓXIMO AO ULTRABOX 24HS DO ARAPOANGA - PLANALTINA/DF</h3>
+      <h3 style="text-align: left; margin-left: 3rem;" [hidden]="!getNotExisteValor()">RECIBO {{chamado.recibo}}</h3>
+      <h3 style="text-align: left; margin-left: 3rem;" [hidden]="getNotExisteValor()">ORÇAMENTO {{chamado.recibo}}</h3>
     </div>
     <div class="subHeader">
       <h3>
-        DATA: {{ chamado.dataAbertura | date:'dd/MM/yyyy' }}<br />
-        CLIENTE: {{chamado.nomeCliente}}<br />
-        TELEFONE: {{chamado.telefoneCliente | mask: '(00) 000-0000'}}<br />
-        MAQUINA: {{ chamado.titulo }} MODELO: {{ chamado.modelo }}<br />
+        CLIENTE: {{chamado.nomeCliente}}<br/>
+        DATA: {{ chamado.dataAbertura | date:'dd/MM/yyyy' }}<br/>
+        TELEFONE: {{chamado.telefoneCliente | mask: '(00) 000-0000'}}<br/>
+        TIPO DE MAQUINA: {{ chamado.titulo }} MODELO: {{ chamado.modelo }}<br/>
       </h3>
-      <br/><br/><br/>
-      <h3 [hidden]="!getNotExisteValor()">Observações: {{ chamado.observacoes }}</h3>
+      <div [hidden]="!getNotExisteValor()">
+        <h3>
+          <dl>
+            <dt>AUTORIZO</dt>
+            <dd>A execução dos serviços necessários para consertar, manutenção ou montagem da máquina.
+              A data prevista de entrega é baseada no prazo de produção de empresa, dos fornecedores podendo
+              sofrer alteração o atraso.
+            </dd>
+            <br>
+            <dd>
+              'DE ACORDO COM O CÓDIGO DE PROCESSO CIVIL ARTIGO 1.175 QUE CASO O CONSUMIDOR NÃO RETIRAR O PRODUTO NO
+              PRAZO DE 90 (NOVENTA) DIAS, ESTE SERÁ DADOS PARA COBRIR CUSTOS OU CASO NÃO AUTORIZADO O CONSERTO A MÁQUINA
+              SERÁ SUCATEADA.'
+            </dd>
+            <br>
+            <dd>
+              Orçamento não aprovados, será cobrado uma taxa de R$ 35,00(Trinta e Cinco Reais), para cobrir custos de
+              desmontagem de máquina e de hora técnica.
+            </dd>
+            <br>
+            <dd>
+              Todo orçamento poderá sofrer alteração de valores.
+            </dd>
+          </dl>
+        </h3>
+        <br/><br/><br/>
+        <h3>Observações: {{ chamado.observacoes }}</h3>
+      </div>
     </div>
     <div [hidden]="getNotExisteValor()">
       <table mat-table [dataSource]="dataSource" class="table">
 
         <ng-container matColumnDef="descricao">
           <th mat-header-cell *matHeaderCellDef><strong> DESCRIÇÃO DOS ITENS </strong></th>
-          <td mat-cell *matCellDef="let transaction"> {{transaction.descricao}} </td>
-          <td mat-footer-cell *matFooterCellDef> TOTAL DOS ITENS </td>
+          <td mat-cell *matCellDef="let transaction"> {{transaction.descricao}}</td>
+          <td mat-footer-cell *matFooterCellDef> TOTAL DOS ITENS</td>
         </ng-container>
 
         <ng-container matColumnDef="quantidade">
-          <th mat-header-cell *matHeaderCellDef> QUANTIDADE </th>
-          <td mat-cell *matCellDef="let transaction"> {{transaction.quantidadeSolicitada}} </td>
+          <th mat-header-cell *matHeaderCellDef> QUANTIDADE</th>
+          <td mat-cell *matCellDef="let transaction"> {{transaction.quantidadeSolicitada}}</td>
           <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
 
         <ng-container matColumnDef="valor">
-          <th mat-header-cell *matHeaderCellDef> VALOR </th>
-          <td mat-cell *matCellDef="let transaction"> {{transaction.valor | currency}} </td>
+          <th mat-header-cell *matHeaderCellDef> VALOR</th>
+          <td mat-cell *matCellDef="let transaction"> {{transaction.valor | currency}}</td>
           <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
 
         <ng-container matColumnDef="valor_total">
-          <th mat-header-cell *matHeaderCellDef> TOTAL </th>
+          <th mat-header-cell *matHeaderCellDef> TOTAL</th>
           <td mat-cell *matCellDef="let transaction"> {{transaction.valor * transaction.quantidadeSolicitada |
-            currency}} </td>
-          <td mat-footer-cell *matFooterCellDef> {{getValorTotalItens() | currency}} </td>
+            currency}}
+          </td>
+          <td mat-footer-cell *matFooterCellDef> {{getValorTotalItens() | currency}}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -60,15 +89,15 @@
 
         <ng-container matColumnDef="descricao">
           <th mat-header-cell *matHeaderCellDef><strong> DESCRIÇÃO DOS SERVIÇOS </strong></th>
-          <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
-          <td mat-footer-cell *matFooterCellDef> TOTAL DOS SERVIÇOS </td>
+          <td mat-cell *matCellDef="let element"> {{element.descricao}}</td>
+          <td mat-footer-cell *matFooterCellDef> TOTAL DOS SERVIÇOS</td>
         </ng-container>
 
 
         <ng-container matColumnDef="valor">
           <th mat-header-cell *matHeaderCellDef> VALOR</th>
-          <td mat-cell *matCellDef="let element"> {{element.valor | currency}} </td>
-          <td mat-footer-cell *matFooterCellDef> {{getValorTotalServicos() | currency }} </td>
+          <td mat-cell *matCellDef="let element"> {{element.valor | currency}}</td>
+          <td mat-footer-cell *matFooterCellDef> {{getValorTotalServicos() | currency }}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumnsServico"></tr>
@@ -78,17 +107,17 @@
 
       <table class="table" mat-table [dataSource]="dataSourceServico">
         <ng-container matColumnDef="descricao">
-          <td mat-footer-cell *matFooterCellDef><strong> TOTAL DE SERVIÇOS E PEÇAS </strong> </td>
+          <td mat-footer-cell *matFooterCellDef><strong> TOTAL DE SERVIÇOS E PEÇAS </strong></td>
         </ng-container>
         <ng-container matColumnDef="valor">
           <td mat-footer-cell *matFooterCellDef><strong> {{getValorTotalServicos() + getValorTotalItens() | currency }}
-            </strong></td>
+          </strong></td>
         </ng-container>
         <tr mat-footer-row *matFooterRowDef="displayedColumnsServico"></tr>
       </table>
     </div>
 
-    <hr size="1" />
+    <hr size="1"/>
     <table class="tebelaFooter">
       <tr>
         <!--
@@ -96,21 +125,19 @@
            <a href="https://www.SEUSITE.com.br" target="_blank"><img src="https://goo.gl/Y7AqYY" border="0" /></a>
         </td>
         -->
-        <td style="font-family:tahoma,arial,verdana; font-size:12px; padding-left:10px">
-          <br />
-          <br />
-          <mat-icon matSuffix>build</mat-icon>
+        <td style="font-family:tahoma,arial,verdana; font-size:12px; padding-left:48px">
+          <br/>
+          <br/>
           Assinatura:
-          <hr style="width: 50%;margin-left: 0%;" />
+          <hr style="width: 50%;margin-left: 0%;"/>
           <strong>LEMES ROÇADEIRAS E MOTOSSERRAS</strong>
-          <br />
+          <br/>
           <strong>Fone:</strong> (61) 9-9632-7867
-          <br />
-          <br />
+          <br/>
+          <br/>
         </td>
       </tr>
     </table>
-
   </div>
   <form>
   </form>

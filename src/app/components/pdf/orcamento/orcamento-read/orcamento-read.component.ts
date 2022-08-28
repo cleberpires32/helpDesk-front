@@ -105,7 +105,7 @@ export class OrcamentoReadComponent implements OnInit {
     .container{ width: 80%; margin:auto; font-size: 70%;  }\n\
     table {text-align: left; width: 85%; margin-left: 50px; margin-bottom: 1rem; font-size: 70%; font-family: Franklin Gothic Medium, Times New Roman, Arial, sans-serif; margin-bottom: 2.5rem; }\n\
     .header{text-align: center; font-family: Franklin Gothic Medium , Times New Roman, Arial, sans-serif; color: rgb(56, 55, 55); line-height: 0.3; padding-top: 30px; }\n\
-    .subHeader{text-align: left; font-family: Franklin Gothic Medium, Times New Roman, Arial, sans-serif; color: rgb(56, 55, 55); padding-left: 49px; padding-top: 27px; padding-bottom: 16px;}\n\
+    .subHeader{ width: 800px; text-align: justify; font-family: Franklin Gothic Medium, Times New Roman, Arial, sans-serif; color: rgb(56, 55, 55); padding-left: 49px; padding-top: 27px; padding-bottom: 16px;}\n\
      h1 {width: 100%; text-align: center;}\n\
      tr.mat-header-row {height: 20px; background-color: rgb(245, 240, 240);}\n\
      tr.mat-row, tr.mat-footer-row {height: 30px;}\n\
