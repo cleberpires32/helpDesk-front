@@ -22,6 +22,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteCreateComponent } from './components/cliente/cliente-create/cliente-create.component';
+import { AndamentoComponent } from './components/status/andamento/andamento.component';
 
 const routes: Routes = [
   {
@@ -45,7 +46,8 @@ const routes: Routes = [
         { path: 'itensEstoques/create', component: ItensEstoqueCreateComponent},
         { path: 'itensEstoques/update/:id', component: ItensEstoqueUpdateComponent},
         { path: 'chamados/:id/orcamento', component: OrcamentoReadComponent},
-        { path: 'servicos/create', component: ServicoCreateComponent}
+        { path: 'servicos/create', component: ServicoCreateComponent},
+        { path: 'chamados/:id/status/andamento', component: AndamentoComponent}
       ]
   },
   {

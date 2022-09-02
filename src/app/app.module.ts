@@ -55,6 +55,7 @@ import { ServicoListComponent } from './components/servico/servico-list/servico-
 import { ServicoListChamadoComponent } from './components/servico/servico-list-chamado/servico-list-chamado.component';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AndamentoComponent } from './components/status/andamento/andamento.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -85,7 +86,8 @@ registerLocaleData(ptBr);
     OrcamentoReadComponent,
     ServicoCreateComponent,
     ServicoListComponent,
-    ServicoListChamadoComponent
+    ServicoListChamadoComponent,
+    AndamentoComponent
   ],
   imports: [
     BrowserModule,
