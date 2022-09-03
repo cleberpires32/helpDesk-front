@@ -56,6 +56,8 @@ import { ServicoListChamadoComponent } from './components/servico/servico-list-c
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AndamentoComponent } from './components/status/andamento/andamento.component';
+
+import {MatTabsModule} from '@angular/material/tabs';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -110,7 +112,8 @@ registerLocaleData(ptBr);
     MatRadioModule,
     MatBadgeModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTabsModule
 
   ],
   providers: [AuthInterceptorProvider, { provide: LOCALE_ID, useValue: 'pt' },
