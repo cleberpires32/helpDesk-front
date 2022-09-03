@@ -45,3 +45,15 @@ tr.mat-header-row {
 tr.mat-row, tr.mat-footer-row {
   height: 30px;
 }
+
+.button-superior-thumb-up{
+position: relative; top: 37px; left: 0.3rem
+}
+
+.button-superior-thumb-down{
+position: relative; top: 37px; left: 0.6rem
+}
+
+.button-superior-imprint{
+position: relative; top: 37px;
+}

@@ -1,8 +1,21 @@
 <div class="container">
-  <button class="mat-elevation-z8" style="position: relative; top: 37px;" mat-flat-button (click)="printComponent()">
-    <mat-icon matSuffix>print</mat-icon>
-  </button>
 
+  <div>
+    <button class="mat-elevation-z8 button-superior-imprint" mat-flat-button (click)="printComponent()">
+      <mat-icon matSuffix>print</mat-icon>
+    </button>
+  </div>
+  <div style="padding-left: 4rem;" [hidden]="getNotExisteValor()">
+    <button class="mat-elevation-z8 button-superior-thumb-up" mat-flat-button (click)="aprovar()">
+      <mat-icon matSuffix style="color:{{thumb_up}}">thumb_up</mat-icon>
+      Aprovado
+    </button>
+
+    <button class="mat-elevation-z8 button-superior-thumb-down" mat-flat-button (click)="recusar()">
+      <mat-icon matSuffix style="color:{{thumb_down}}">thumb_down</mat-icon>
+      Recusado
+    </button>
+  </div>
   <div class="mat-elevation-z8" id="paginaRecibo">
 
     <div class="header">
@@ -11,7 +24,8 @@
       <h3>CNPJ: 38.656.210/0001-05</h3>
       <h3>TELEFONE: (61) 9-9632-7867</h3>
       <h3>PRÓXIMO AO ULTRABOX 24HS DO ARAPOANGA - PLANALTINA/DF</h3>
-      <h3 style="text-align: left; margin-left: 3rem;">{{getNotExisteValor() ? 'RECIBO' : 'ORÇAMENTO'}} {{chamado.recibo}}</h3>
+      <h3 style="text-align: left; margin-left: 3rem;">{{getNotExisteValor() ? 'RECIBO' : 'ORÇAMENTO'}}
+        {{chamado.recibo}}</h3>
     </div>
     <div class="subHeader">
       <h3>

@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { __values } from 'tslib';
 import { Chamado } from 'src/app/components/chamado/Chamado';
 import { Servico } from 'src/app/components/servico/Servico';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-orcamento-read',
@@ -19,7 +20,8 @@ export class OrcamentoReadComponent implements OnInit {
   constructor(
     private itensEstoqueService: ItensEstoqueService,
     private chamadoService: ChamadoService,
-    private actiRouter: ActivatedRoute) { }
+    private actiRouter: ActivatedRoute,
+    private toastrService: ToastrService) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
@@ -29,6 +31,8 @@ export class OrcamentoReadComponent implements OnInit {
 
   valor: any;
   valor_servico = 0;
+  thumb_up = '';
+  thumb_down = '';
 
   displayedColumns: string[] = ['descricao', 'quantidade', 'valor', 'valor_total'];
   displayedColumnsServico: string[] = ['descricao', 'valor'];
@@ -60,18 +64,23 @@ export class OrcamentoReadComponent implements OnInit {
     this.findByIdChamado();
   }
 
+  verificarStatus(){
+    if(this.chamado.status == "1"){
+      this.thumb_up = 'green'
+    }else if(this.chamado.status == "2"){
+      this.thumb_down = 'red'}
+  }
+
   findByIdChamado() {
     this.chamadoService.findById(this.chamado.id).subscribe(response => {
       this.chamado = response;
-      console.log('o que esta aparecendo no chamado', this.chamado);
-
       this.ELEMENT_DATA = this.chamado.itensEstoque;
       this.ELEMENT_DATA_SERVICO = this.chamado.servicos;
       this.dataSource = new MatTableDataSource<ItensEstoque>(this.ELEMENT_DATA);
       this.dataSourceServico = new MatTableDataSource<Servico>(this.ELEMENT_DATA_SERVICO);
       this.dataSource.paginator = this.paginator
+      this.verificarStatus();
     })
-
   }
 
   getValorTotalItens() {
@@ -116,4 +125,28 @@ export class OrcamentoReadComponent implements OnInit {
     WindowPrt.print();
     WindowPrt.close();
   }
+
+  aprovar() {
+  this.chamado.status = '1';
+  this.thumb_up = 'green';
+  this.thumb_down = '';
+   this.chamadoService.update(this.chamado).subscribe(response =>{
+        this.toastrService.success('Orçamento aprovado com sucesso.');
+        //this.router.navigate(['chamados'])
+      }, ex =>{
+        this.toastrService.error(ex.error.error)
+      })
+  }
+
+    recusar() {
+    this.chamado.status = '2';
+    this.thumb_down = 'red'
+    this.thumb_up = '';
+     this.chamadoService.update(this.chamado).subscribe(response =>{
+          this.toastrService.success('Orçamento cancelado com sucesso.');
+          //this.router.navigate(['chamados'])
+        }, ex =>{
+          this.toastrService.error(ex.error.error)
+        })
+    }
 }
