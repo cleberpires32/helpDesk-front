@@ -4,12 +4,12 @@
     <mat-tab label="Pendências">
       <div class="small-box mat-elevation-z4">
         Digitar pendências:
-        <input [(ngModel)]="txtpendencia" name="pendencia"
+        <input style="background-color:lightblue" [(ngModel)]="txtpendencia" name="pendencia"
                matInput placeholder="Click aqui para digitar.">
 
-        <button (click)="addPendencia()">
-          <mat-icon>add</mat-icon>
-        </button>
+
+          <mat-icon (click)="addPendencia()">add</mat-icon>
+
 
       </div>
       <div class="box-text mat-elevation-z4">
