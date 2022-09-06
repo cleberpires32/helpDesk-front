@@ -13,11 +13,25 @@
 }
 
 .small-box {
-  height: 100px;
-  width: 100px;
+  height: 40px;
+  width: 444px;
 }
 
 .large-box {
   height: 300px;
   width: 300px;
+}
+.full-width {
+    width: 50%;
+    margin-right: 0.4rem
+  }
+.box-text {
+  height: 200px;
+  width: 479px;
+  border: 1px solid #555;
+  overflow: auto;
+  margin-left: 0.9rem
+}
+.full-width {
+  width: 100%;
 }
