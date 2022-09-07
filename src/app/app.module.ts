@@ -58,6 +58,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AndamentoComponent } from './components/status/andamento/andamento.component';
 
 import {MatTabsModule} from '@angular/material/tabs';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -113,7 +116,9 @@ registerLocaleData(ptBr);
     MatBadgeModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   providers: [AuthInterceptorProvider, { provide: LOCALE_ID, useValue: 'pt' },

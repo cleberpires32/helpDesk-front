@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Chamado } from '../../chamado/Chamado'
+import { ChamadoService } from 'src/app/services/chamado.service'
+
 @Component({
   selector: 'app-andamento',
   templateUrl: './andamento.component.html',
@@ -8,14 +13,37 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class AndamentoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private chamadoService: ChamadoService,
+              private router: Router,
+              private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.chamado.id = this.activeRoute.snapshot.paramMap.get('id');
   }
 
-  dataNow = new Date('2021-04-23T10:00:00.000');
+  chamado: Chamado = {
+    id: '',
+    dataAbertura: '',
+    dataFechamento: '',
+    status: '',
+    prioridade: '',
+    titulo: '',
+    modelo: '',
+    recibo: '',
+    observacoes: '',
+    telefoneCliente: '',
+    cliente: '',
+    nomeCliente: '',
+    tecnico: '',
+    nomeTecnico: '',
+    itensEstoque: [],
+    servicos: [],
+    adicionarIten: false
+  };
+  dataNow = new Date();
   txtpendencia = '';
   listPendencia: string[] = [];
+  selected = this.dataNow;
 
   addPendencia(){
   if( this.notNull() ){
@@ -33,6 +61,10 @@ export class AndamentoComponent implements OnInit {
           }
         })
      }
+  }
+
+  finalizarOsm(){
+
   }
 
   notNull(){

@@ -3,7 +3,7 @@
   margin: auto;
 }
 
-.small-box, .large-box {
+.box-pendencia, .small-box, .large-box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,18 +13,20 @@
 }
 
 .small-box {
-  height: 40px;
-  width: 444px;
+  height: 320px;
+  width: 300px;
 }
 
 .large-box {
   height: 300px;
   width: 300px;
 }
-.full-width {
-    width: 50%;
-    margin-right: 0.4rem
-  }
+
+.box-pendencia {
+    height: 50px;
+    width: 446px;
+}
+
 .box-text {
   height: 200px;
   width: 479px;
@@ -32,6 +34,7 @@
   overflow: auto;
   margin-left: 0.9rem
 }
+
 .full-width {
   width: 100%;
 }

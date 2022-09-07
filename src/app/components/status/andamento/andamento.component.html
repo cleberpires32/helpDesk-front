@@ -2,15 +2,11 @@
   <mat-tab-group dynamicHeight>
 
     <mat-tab label="Pendências">
-      <div class="small-box mat-elevation-z4">
+      <div class="box-pendencia mat-elevation-z4">
         Digitar pendências:
         <input style="background-color:lightblue" [(ngModel)]="txtpendencia" name="pendencia"
                matInput placeholder="Click aqui para digitar.">
-
-
           <mat-icon (click)="addPendencia()">add</mat-icon>
-
-
       </div>
       <div class="box-text mat-elevation-z4">
         <div *ngFor="let e of listPendencia">
@@ -29,16 +25,20 @@
         * Entrada da máquina dia dd/mm/yyyy.
       </div>
     </mat-tab>
-    <mat-tab label="Orçamento Aprovado">
+    <mat-tab label="Concluir OSM">
       <div class="small-box mat-elevation-z4">
-        <button mat-raised-button class="full-width" color="primary">
-          <mat-icon> done_outline</mat-icon>
-          finalizar serviço
-        </button>
-        <button mat-raised-button class="full-width" color="primary">
-          <mat-icon matSuffix>print</mat-icon>
-          Emitir recibo
-        </button>
+        <div>
+          <mat-card class="demo-inline-calendar-card">
+            <mat-calendar [(selected)]="selected"></mat-calendar>
+           <strong> {{selected | date}} </strong>
+          </mat-card>
+          <button mat-raised-button
+                  (click)="finalizarOsm()"
+                  class="full-width" color="primary">
+            <mat-icon> done_outline</mat-icon>
+            finalizar serviço
+          </button>
+        </div>
       </div>
     </mat-tab>
   </mat-tab-group>
