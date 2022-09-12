@@ -61,6 +61,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogContentComponent } from './dialog/dialog-content/dialog-content.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -92,7 +94,8 @@ registerLocaleData(ptBr);
     ServicoCreateComponent,
     ServicoListComponent,
     ServicoListChamadoComponent,
-    AndamentoComponent
+    AndamentoComponent,
+    DialogContentComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +121,8 @@ registerLocaleData(ptBr);
     MatProgressSpinnerModule,
     MatTabsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
 
   ],
   providers: [AuthInterceptorProvider, { provide: LOCALE_ID, useValue: 'pt' },

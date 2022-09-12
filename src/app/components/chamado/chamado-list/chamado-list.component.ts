@@ -4,6 +4,8 @@ import { ChamadoService } from './../../../services/chamado.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { DialogContentComponent } from 'src/app/dialog/dialog-content/dialog-content.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-chamado-list',
@@ -19,7 +21,7 @@ export class ChamadoListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
 
-  constructor(private chamadoService: ChamadoService) { }
+  constructor(private chamadoService: ChamadoService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -75,4 +77,12 @@ export class ChamadoListComponent implements OnInit {
     this.dataSource = new MatTableDataSource<Chamado>(filterRaio);
     this.dataSource.paginator = this.paginator;
   }
+
+  openDialog() {
+    const openDialogRef = this.dialog.open(DialogContentComponent);
+    openDialogRef.afterClosed().subscribe(response =>{
+      console.log(`Dialog Result: ${response}`);
+    })
+  }
+
 }
