@@ -9,10 +9,18 @@
           <mat-icon (click)="addPendencia()">add</mat-icon>
       </div>
       <div class="box-text mat-elevation-z4">
-        <div *ngFor="let e of listPendencia">
+        <div hidden="true" *ngFor="let e of listDescricaoPendencia">
           <ul>
             <li>{{dataNow | date: 'dd/MM/yyyy'}} - {{e}}
             <mat-icon (click)="removePendencia($event, e)">remove_circle_outline</mat-icon>
+            </li>
+          </ul>
+        </div>
+
+        <div *ngFor="let e of listaPendenciaDB">
+          <ul>
+            <li>{{e.descricao}}
+              <mat-icon (click)="remover(e)">remove_circle_outline</mat-icon>
             </li>
           </ul>
         </div>

@@ -1,9 +1,13 @@
+import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { Chamado } from './../../chamado/Chamado';
+import { PendenciaStatusService } from './../../../services/pendencia-status.service';
+import { PendenciaStatus } from './../PendenciaStatus';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Chamado } from '../../chamado/Chamado'
 import { ChamadoService } from 'src/app/services/chamado.service'
 
 @Component({
@@ -15,10 +19,14 @@ export class AndamentoComponent implements OnInit {
 
   constructor(private chamadoService: ChamadoService,
               private router: Router,
-              private activeRoute: ActivatedRoute) { }
+              private activeRoute: ActivatedRoute,
+              private service: PendenciaStatusService,
+              private toast: ToastrService,
+              private route: Router) { }
 
   ngOnInit(): void {
     this.chamado.id = this.activeRoute.snapshot.paramMap.get('id');
+    this.findAll();
   }
 
   chamado: Chamado = {
@@ -40,24 +48,56 @@ export class AndamentoComponent implements OnInit {
     servicos: [],
     adicionarIten: false
   };
+
   dataNow = new Date();
   txtpendencia = '';
-  listPendencia: string[] = [];
+  listDescricaoPendencia: string[] = [];
+  listaPendenciaDB : PendenciaStatus[] = [];
   selected = this.dataNow;
+  pendencia: PendenciaStatus = {id: '',descricao : '',chamadoId: this.chamado}
+
+  salvar(){
+    this.service.create(this.pendencia).subscribe((response) =>{
+      this.reloadCurrentRoute();
+    });
+  }
+
+  remover(idPendencia: any ){
+    this.service.delete(idPendencia.id).subscribe(response =>{
+      this.toast.success('Pendencia removida com sucesso', 'Delete')
+      this.reloadCurrentRoute();
+    }, ex => {
+      if (ex.error.error) {
+        this.toast.error(ex.error.message);
+      }
+    });
+  }
+
+  findAll(){
+    this.service.findByAll(this.chamado.id).subscribe(response => {
+      this.listaPendenciaDB = response;
+    })
+  }
+
+  criaPendencia(texto: string){
+    this.pendencia.descricao = texto,
+    this.pendencia.chamadoId = this.chamado
+  }
 
   addPendencia(){
   if( this.notNull() ){
-    this.listPendencia.push(this.txtpendencia);
+    this.listDescricaoPendencia.push(this.txtpendencia);
+    this.criaPendencia(this.txtpendencia);
     this.txtpendencia = '';
+    this.salvar();
     }
   }
 
-
   removePendencia(event: Event, pen: string) {
     if(event){
-        this.listPendencia.forEach((p, index)=>{
+        this.listDescricaoPendencia.forEach((p, index)=>{
           if(pen == p){
-            this.listPendencia.splice(index,1)
+            this.listDescricaoPendencia.splice(index,1)
           }
         })
      }
@@ -75,4 +115,10 @@ export class AndamentoComponent implements OnInit {
         }
   }
 
+  reloadCurrentRoute() {
+    let currentUrl = this.route.url;
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.route.navigate([currentUrl]);
+    });
+  }
 }

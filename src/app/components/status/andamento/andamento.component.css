@@ -36,5 +36,7 @@
 }
 
 .full-width {
-  width: 100%;
+  width: 30rem;
+  margin-left: 0.9rem;
+  margin-top: 2px;
 }
