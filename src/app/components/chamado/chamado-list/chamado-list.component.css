@@ -7,6 +7,26 @@ table {
   width: 100%;
 }
 
+table td {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+table th {
+  background-color: #898d91;
+  border-color: #dee2e6;
+  color: white;
+  font-size: initial;
+}
+
+mat-paginator {
+  background-color: #898d91;
+  border-color: #dee2e6;
+  color: white;
+  font-size: initial;
+}
+
 button {
   width: 100%;
 }
