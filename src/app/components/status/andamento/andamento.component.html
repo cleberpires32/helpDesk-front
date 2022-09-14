@@ -34,19 +34,18 @@
       </div>
     </mat-tab>
     <mat-tab label="Concluir OSM">
-      <div class="small-box mat-elevation-z4">
-        <div>
-          <mat-card class="demo-inline-calendar-card">
-            <mat-calendar [(selected)]="selected"></mat-calendar>
+      <div class=" small-box mat-elevation-z4">
+          <mat-card>
+          <mat-calendar [(selected)]="selected"></mat-calendar>
            <strong> {{selected | date}} </strong>
+           <button mat-raised-button
+              (click)="finalizarOsm()"
+              class="full-width" color="primary">
+              <mat-icon> done_outline</mat-icon>
+               finalizar serviço
+            </button>
           </mat-card>
-          <button mat-raised-button
-                  (click)="finalizarOsm()"
-                  class="full-width" color="primary">
-            <mat-icon> done_outline</mat-icon>
-            finalizar serviço
-          </button>
-        </div>
+
       </div>
     </mat-tab>
   </mat-tab-group>

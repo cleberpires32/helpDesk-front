@@ -104,7 +104,7 @@ export class AndamentoComponent implements OnInit {
   }
 
   finalizarOsm(){
-
+console.log('data: ',this.selected)
   }
 
   notNull(){
