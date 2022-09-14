@@ -1,3 +1,4 @@
+import { EncerraChamado } from './../EncerraChamado';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Chamado } from './../../chamado/Chamado';
@@ -55,6 +56,7 @@ export class AndamentoComponent implements OnInit {
   listaPendenciaDB : PendenciaStatus[] = [];
   selected = this.dataNow;
   pendencia: PendenciaStatus = {id: '',descricao : '',chamadoId: this.chamado}
+  encerraChamado: EncerraChamado = {idChamado: '',dataEncerramento: ''}
 
   salvar(){
     this.service.create(this.pendencia).subscribe((response) =>{
@@ -104,7 +106,19 @@ export class AndamentoComponent implements OnInit {
   }
 
   finalizarOsm(){
-console.log('data: ',this.selected)
+    this.encerraChamado.idChamado = this.chamado.id;
+    this.encerraChamado.dataEncerramento = this.selected;
+    console.log('objeto encerra chamado; ',this.selected);
+
+    this.service.encerraChamado(this.encerraChamado).subscribe((response) =>{
+      this.toast.success('OSM encerrada com sucesso', 'ALTERAÇÃO')
+      this.reloadCurrentRoute();
+    }, ex => {
+      if (ex.error.error) {
+        this.toast.error(ex.error.message);
+      }
+    })
+
   }
 
   notNull(){
