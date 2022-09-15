@@ -26,7 +26,7 @@ export class ChamadoListComponent implements OnInit {
   ngOnInit(): void {
     this.findAll();
   }
-
+chamado: any;
   findAll() {
     return this.chamadoService.findAll().subscribe(response => {
       this.ELEMENT_DATA = response;

@@ -20,6 +20,7 @@ export class ChamadoReadComponent implements OnInit {
     id: '',
     dataAbertura: '',
     dataFechamento: '',
+    dataEntrega: '',
     status: '',
     prioridade: '',
     titulo: '',

@@ -43,6 +43,7 @@ export class OrcamentoReadComponent implements OnInit {
     id: '',
     dataAbertura: '',
     dataFechamento: '',
+    dataEntrega: '',
     status: '',
     prioridade: '',
     titulo: '',

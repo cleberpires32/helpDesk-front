@@ -47,6 +47,7 @@ export class PedidoItensEstoqueComponent implements OnInit {
     id: '',
     dataAbertura: '',
     dataFechamento: '',
+    dataEntrega: '',
     status: '',
     prioridade: '',
     titulo: '',

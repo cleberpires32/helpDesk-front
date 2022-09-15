@@ -28,6 +28,7 @@ export class ServicoListChamadoComponent implements OnInit {
     id: '',
     dataAbertura: '',
     dataFechamento: '',
+    dataEntrega: '',
     status: '',
     prioridade: '',
     titulo: '',

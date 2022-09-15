@@ -27,6 +27,7 @@ export class ServicoListComponent implements OnInit {
     id: '',
     dataAbertura: '',
     dataFechamento: '',
+    dataEntrega: '',
     status: '',
     prioridade: '',
     titulo: '',

@@ -35,6 +35,7 @@ export class ChamadoCreateComponent implements OnInit {
     id: '',
     dataAbertura: '',
     dataFechamento: '',
+    dataEntrega:'',
     status: '',
     prioridade: '',
     titulo: '',

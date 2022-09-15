@@ -6,6 +6,7 @@ export interface Chamado
   id: any;
   dataAbertura : string;
   dataFechamento: string;
+  dataEntrega: string;
   status: string;
   prioridade: any;
   titulo: string;

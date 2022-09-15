@@ -28,12 +28,16 @@
     </mat-tab>
     <mat-tab label="Situação da máquina">
       <div class="large-box mat-elevation-z4">
-        * Máquina pronta entrega aguardando retirada desde a data 14/09/22.
-        * Máquina retirada dia dd/mm/yyyy.
-        * Entrada da máquina dia dd/mm/yyyy.
+        <mat-list>
+          <mat-list-item>Entrada da máquina dia:  {{chamado.dataAbertura | date:"dd/MM/yyyy" | uppercase}}</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Pronta entrega desde a data: {{chamado.dataFechamento | date:"dd/MM/yyyy" | uppercase}}</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Máquina retirada dia: {{chamado.dataEntrega | date:"dd/MM/yyyy" | uppercase}}</mat-list-item>
+        </mat-list>
       </div>
     </mat-tab>
-    <mat-tab label="Concluir OSM">
+    <mat-tab label="Concluir OSM" disabled="{{chamado.dataFechamento !== null}}">
       <div class=" small-box mat-elevation-z4">
           <mat-card>
           <mat-calendar [(selected)]="selected"></mat-calendar>
@@ -45,8 +49,22 @@
                finalizar serviço
             </button>
           </mat-card>
-
       </div>
     </mat-tab>
+    <mat-tab label="Datar Entrega" disabled="{{chamado.dataEntrega !== null}}">
+      <div class=" small-box mat-elevation-z4">
+          <mat-card>
+          <mat-calendar [(selected)]="selected"></mat-calendar>
+           <strong> {{selected | date}} </strong>
+           <button mat-raised-button
+              (click)="entregaMaquina()"
+              class="full-width" color="primary">
+              <mat-icon> done_outline</mat-icon>
+               Datar Entrega
+            </button>
+          </mat-card>
+      </div>
+    </mat-tab>
+
   </mat-tab-group>
 </div>

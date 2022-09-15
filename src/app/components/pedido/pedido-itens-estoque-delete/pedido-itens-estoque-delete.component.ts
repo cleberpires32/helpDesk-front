@@ -26,6 +26,7 @@ export class PedidoItensEstoqueDeleteComponent implements OnInit {
     id: '',
     dataAbertura: '',
     dataFechamento: '',
+    dataEntrega: '',
     status: '',
     prioridade: '',
     titulo: '',

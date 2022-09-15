@@ -28,12 +28,15 @@ export class AndamentoComponent implements OnInit {
   ngOnInit(): void {
     this.chamado.id = this.activeRoute.snapshot.paramMap.get('id');
     this.findAll();
+    this.findByIdChamado();
+    console.log('chamado: ',this.chamado)
   }
 
   chamado: Chamado = {
     id: '',
     dataAbertura: '',
     dataFechamento: '',
+    dataEntrega: '',
     status: '',
     prioridade: '',
     titulo: '',
@@ -56,7 +59,7 @@ export class AndamentoComponent implements OnInit {
   listaPendenciaDB : PendenciaStatus[] = [];
   selected = this.dataNow;
   pendencia: PendenciaStatus = {id: '',descricao : '',chamadoId: this.chamado}
-  encerraChamado: EncerraChamado = {idChamado: '',dataEncerramento: ''}
+  encerraChamado: EncerraChamado = {idChamado: '',dataEncerramento: '', dataEntrega:''}
 
   salvar(){
     this.service.create(this.pendencia).subscribe((response) =>{
@@ -108,7 +111,6 @@ export class AndamentoComponent implements OnInit {
   finalizarOsm(){
     this.encerraChamado.idChamado = this.chamado.id;
     this.encerraChamado.dataEncerramento = this.selected;
-    console.log('objeto encerra chamado; ',this.selected);
 
     this.service.encerraChamado(this.encerraChamado).subscribe((response) =>{
       this.toast.success('OSM encerrada com sucesso', 'ALTERAÇÃO')
@@ -119,6 +121,28 @@ export class AndamentoComponent implements OnInit {
       }
     })
 
+  }
+
+  entregaMaquina(){
+    this.encerraChamado.idChamado = this.chamado.id;
+    this.encerraChamado.dataEntrega = this.selected;
+    this.encerraChamado.dataEncerramento = this.chamado.dataFechamento;
+
+    this.service.encerraChamado(this.encerraChamado).subscribe((response) =>{
+      this.toast.success('Data de Entrega salva com sucesso', 'ALTERAÇÃO')
+      this.reloadCurrentRoute();
+    }, ex => {
+      if (ex.error.error) {
+        this.toast.error(ex.error.message);
+      }
+    })
+
+  }
+
+  findByIdChamado(){
+    this.chamadoService.findById(this.chamado.id).subscribe(response =>{
+      this.chamado = response;
+    })
   }
 
   notNull(){
