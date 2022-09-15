@@ -70,7 +70,8 @@
           <a hidden="true"><i class="material-icons delete" routerLink="read/{{element.id}}">visibility</i></a>
           <a><i class="material-icons pedidos" routerLink="pedidosChamado/{{element.id}}">move_up</i></a>
           <a><i class="material-icons orcamento" style="color: green;" routerLink="{{element.id}}/orcamento">monetization_on</i></a>
-          <a><i *ngIf='filterStatus(element.status)==="ENCERRADO"' class="material-icons" routerLink="{{element.id}}/status/andamento">visibility</i></a>
+          <a><i *ngIf='filterStatus(element.status)==="ENCERRADO" && entregue(element.dataEntrega)' class="material-icons" routerLink="{{element.id}}/status/andamento">visibility</i></a>
+          <a><i *ngIf='!entregue(element.dataEntrega)' style="color: green;" class="material-icons" routerLink="{{element.id}}/status/andamento">check_circle_outline</i></a>
         </td>
       </ng-container>
 

@@ -56,6 +56,12 @@ chamado: any;
       else return false
     }
 
+  entregue(entregue: any): boolean {
+    console.log('o que passas por aqui:', entregue)
+    if (entregue !== null) { return false }
+    else return true
+  }
+
   filterPrioridade(prioridade: any): string {
     if (prioridade == '0') {
       return 'BAIXA'
