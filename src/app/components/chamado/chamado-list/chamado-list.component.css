@@ -16,14 +16,16 @@ table td {
 }
 
 table th {
-  background-color: #1b6ec1;
+ /* background-color: #1b6ec1;*/
+ background: linear-gradient(180deg, rgba(12,80,88,1) 0%, rgba(68,173,194,1) 100%);
   border-color: #dee2e6;
   color: white;
   font-size: initial;
 }
 
 mat-paginator {
-  background-color: #1b6ec1;
+ /* background-color: #1b6ec1;*/
+  background: linear-gradient(180deg, rgb(102, 110, 110) 0%, rgb(116, 148, 155) 100%);
   border-color: #dee2e6;
   color: white;
   font-size: initial;
@@ -32,6 +34,9 @@ mat-paginator {
 
 button {
   width: 100%;
+  background: linear-gradient(180deg, rgba(12,80,88,1) 0%, rgba(68,173,194,1) 100%);
+  color: white;
+  font-size: initial;
 }
 
 h1 {
