@@ -69,14 +69,18 @@
           <a><i class="material-icons edit" routerLink="update/{{element.id}}">edit</i></a>
           <a hidden="true"><i class="material-icons delete" routerLink="read/{{element.id}}">visibility</i></a>
           <a><i class="material-icons pedidos" routerLink="pedidosChamado/{{element.id}}">move_up</i></a>
-          <a><i class="material-icons orcamento" style="color: green;" routerLink="{{element.id}}/orcamento">monetization_on</i></a>
+          <a><i class="material-icons"
+            [ngClass]="{'orcamento_green': filterStatus(element.status) !=='CANCELADO',
+            'orcamento_red': filterStatus(element.status) ==='CANCELADO'}"
+            routerLink="{{element.id}}/orcamento">monetization_on</i></a>
           <a><i *ngIf='filterStatus(element.status)==="ENCERRADO" && entregue(element.dataEntrega)' class="material-icons" routerLink="{{element.id}}/status/andamento">visibility</i></a>
           <a><i *ngIf='!entregue(element.dataEntrega)' style="color: green;" class="material-icons" routerLink="{{element.id}}/status/andamento">check_circle_outline</i></a>
+
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="mat-elevation-z8"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="mat-elevation-z8"></tr>
     </table>
     <mat-paginator #paginatorABV [pageSize]="10" [pageSizeOptions]="[5]" [showFirstLastButtons]="true"></mat-paginator>
   </div>

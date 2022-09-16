@@ -51,13 +51,17 @@ chamado: any;
     else { return 'ENCERRADO' }
   }
 
+  cor(status: any): string {
+     if (status == '2') { return 'red' }
+    else { return 'green' }
+  }
+
   filterStatusAndamento(status: any): boolean {
       if (status == '1') { return true }
       else return false
     }
 
   entregue(entregue: any): boolean {
-    console.log('o que passas por aqui:', entregue)
     if (entregue !== null) { return false }
     else return true
   }

@@ -8,23 +8,26 @@ table {
 }
 
 table td {
+  border-spacing: .2rem;
   color: #495057;
   background-color: #e9ecef;
-  border-color: #dee2e6;
+  border-color: #ada8a8;
+  border-block-end-width: 4px;
 }
 
 table th {
-  background-color: #898d91;
+  background-color: #1b6ec1;
   border-color: #dee2e6;
   color: white;
   font-size: initial;
 }
 
 mat-paginator {
-  background-color: #898d91;
+  background-color: #1b6ec1;
   border-color: #dee2e6;
   color: white;
   font-size: initial;
+  height: 60px;
 }
 
 button {
@@ -64,4 +67,11 @@ cursor: pointer;
 
 a {
   margin-right: .6rem;
+}
+
+.orcamento_green {
+  color: #06b62c !important;
+}
+.orcamento_red {
+  color: #e42323 ;
 }

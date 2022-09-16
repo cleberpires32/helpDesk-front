@@ -7,12 +7,12 @@
   </div>
   <div style="padding-left: 4rem;" [hidden]="getNotExisteValor()">
     <button class="mat-elevation-z8 button-superior-thumb-up" mat-flat-button (click)="aprovar()">
-      <mat-icon matSuffix style="color:{{thumb_up}}">thumb_up</mat-icon>
+      <i class="material-icons" [ngClass]="{'corverde': thumb_up === 'green'}">thumb_up</i>
       Aprovado
     </button>
 
     <button class="mat-elevation-z8 button-superior-thumb-down" mat-flat-button (click)="recusar()">
-      <mat-icon matSuffix style="color:{{thumb_down}}">thumb_down</mat-icon>
+      <mat-icon matSuffix [ngClass]="{'corred': thumb_down === 'red'}">thumb_down</mat-icon>
       Recusado
     </button>
   </div>
