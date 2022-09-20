@@ -36,7 +36,7 @@ export class ChamadoCreateComponent implements OnInit {
     dataAbertura: '',
     dataFechamento: '',
     dataEntrega:'',
-    status: '',
+    status: '0',
     prioridade: '',
     titulo: '',
     modelo:'',
@@ -58,13 +58,10 @@ export class ChamadoCreateComponent implements OnInit {
   ngOnInit(): void {
     this.findTecnicos()
     this.findClientes()
-    console.log(this.validaCampos);
-
   }
 
   create(): void {
     this.chamadoService.create(this.chamado).subscribe(response =>{
-      console.log(response);
       this.toastrService.success('Chamado salvo com sucesso','Novo Chamado');
       this.router.navigate(['chamados']);
     }, ex => {
