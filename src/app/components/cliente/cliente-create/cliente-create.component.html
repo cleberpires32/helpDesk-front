@@ -4,7 +4,7 @@
 
     <section class="section">
       <mat-checkbox disabled="true" color="primary" class="margin">Administrador</mat-checkbox>
-      <mat-checkbox (click)="addPerfil(1)" color="primary" class="margin">Cliente</mat-checkbox>
+      <mat-checkbox (click)="addPerfil(1)" color="primary" class="margin" checked="true">Cliente</mat-checkbox>
       <mat-checkbox disabled="true" color="primary" class="margin">Técnico</mat-checkbox>
     </section>
 
@@ -26,8 +26,6 @@
       [(ngModel)]="cliente.cpf"
       name="cpf"
       mask="000.000.000-00"
-      [formControl] = "cpf"
-      required
       matInput placeholder="Placeholder">
       <mat-icon matSuffix>pin</mat-icon>
     </mat-form-field>
@@ -38,8 +36,6 @@
       [(ngModel)]="cliente.telefone"
       type="text"
       name="telefone"
-      [formControl] = "telefone"
-      required
       matInput placeholder="Placeholder"
       mask="(00) 0-0000-0000">
       <mat-icon matSuffix>phone</mat-icon>

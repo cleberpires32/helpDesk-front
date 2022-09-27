@@ -14,8 +14,8 @@ import { ThisReceiver } from '@angular/compiler';
 export class ClienteCreateComponent implements OnInit {
 
   nome: FormControl = new FormControl(null, Validators.minLength(3));
-  cpf: FormControl = new FormControl(null, Validators.required);
-  telefone: FormControl = new FormControl(null, Validators.required);
+ // cpf: FormControl = new FormControl(null, Validators.required);
+ // telefone: FormControl = new FormControl(null, Validators.required);
   senha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
@@ -46,8 +46,6 @@ export class ClienteCreateComponent implements OnInit {
   }
 
   create(): void {
-    console.log(this.cliente);
-
     this.tecnicoService.create(this.cliente).subscribe(response => {
       this.toast.success('Cliente cadastrado com sucesso', 'Cadastro')
       this.router.navigate(['clientes'])
@@ -59,6 +57,6 @@ export class ClienteCreateComponent implements OnInit {
   }
 
   validaCampos(): boolean {
-    return this.nome.valid && this.cpf.valid && this.telefone.valid && this.senha.valid;
+    return this.nome.valid; //&& this.cpf.valid && this.telefone.valid && this.senha.valid;
   }
 }
