@@ -4,9 +4,9 @@
     <img src="assets/img/perfil.svg">
 
     <section class="section">
-      <mat-checkbox (click)="addPerfil(0)" [disabled]="true" [checked]="admin" color="primary" class="margin">Administrador</mat-checkbox>
-      <mat-checkbox (click)="addPerfil(1)" [disabled]="true" [checked]="cliente" color="primary" class="margin">Cliente</mat-checkbox>
-      <mat-checkbox (click)="addPerfil(2)" [disabled]="true" [checked]="tecni" color="primary" class="margin">Técnico</mat-checkbox>
+      <mat-checkbox (click)="addPerfil(0)" [checked]="admin" color="primary" class="margin">Administrador</mat-checkbox>
+      <mat-checkbox (click)="addPerfil(1)" [disabled]="true" [checked]="cliente" color="primary" class="margin">Técnico</mat-checkbox>
+      <mat-checkbox (click)="addPerfil(2)" [disabled]="true" [checked]="tecni" color="primary" class="margin">Cliente</mat-checkbox>
     </section>
 
     <mat-form-field class="fullWidth" appearance="legacy">

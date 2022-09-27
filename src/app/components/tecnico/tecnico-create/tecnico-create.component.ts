@@ -14,8 +14,8 @@ import { ThisReceiver } from '@angular/compiler';
 export class TecnicoCreateComponent implements OnInit {
 
   nome: FormControl = new FormControl(null, Validators.minLength(3));
-  cpf: FormControl = new FormControl(null, Validators.required);
-  email: FormControl = new FormControl(null, Validators.email);
+  //cpf: FormControl = new FormControl(null, Validators.required);
+  //email: FormControl = new FormControl(null, Validators.email);
   senha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
@@ -59,6 +59,6 @@ export class TecnicoCreateComponent implements OnInit {
   }
 
   validaCampos(): boolean {
-    return this.nome.valid && this.cpf.valid && this.email.valid && this.senha.valid;
+    return this.nome.valid && this.senha.valid;//&& this.cpf.valid && this.email.valid
   }
 }
