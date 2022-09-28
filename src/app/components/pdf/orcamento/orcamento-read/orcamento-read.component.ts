@@ -72,6 +72,13 @@ export class OrcamentoReadComponent implements OnInit {
       this.thumb_down = 'red'}
   }
 
+  ocultaBotaoAprovaErecusa(): boolean{
+    if(this.chamado.status == "3"){
+      return true;
+    }
+    return false;
+  }
+
   findByIdChamado() {
     this.chamadoService.findById(this.chamado.id).subscribe(response => {
       this.chamado = response;

@@ -5,7 +5,8 @@
       <mat-icon matSuffix>print</mat-icon>
     </button>
   </div>
-  <div style="padding-left: 4rem;" [hidden]="getNotExisteValor()">
+
+  <div style="padding-left: 4rem;" [hidden]="getNotExisteValor() || ocultaBotaoAprovaErecusa()">
     <button class="mat-elevation-z8 button-superior-thumb-up" mat-flat-button (click)="aprovar()">
       <i class="material-icons" [ngClass]="{'corverde': thumb_up === 'green'}">thumb_up</i>
       Aprovado
